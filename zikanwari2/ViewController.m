@@ -43,23 +43,23 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
     CGSize whole = [[UIScreen mainScreen]bounds].size;
     
     //一つのラベルのX座標の変数
-    float labelwidth = whole.width/WIDTH_BLOCK_NUM;
+    float buttonwidth = whole.width/WIDTH_BLOCK_NUM;
     
     
     //一つのラベルのY座標の変数
-    float labelheight = (whole.height-BOTTOM_HEIGHT)/HEIGHT_BLOCK_NUM;
+    float buttonheight = (whole.height-BOTTOM_HEIGHT)/HEIGHT_BLOCK_NUM;
     
     
     for(int i = 0; i <HEIGHT_BLOCK_NUM; i++){
         for(int j = 0; j<WIDTH_BLOCK_NUM; j++){
-            label[j][i] = [[UIButton alloc]initWithFrame:CGRectMake(labelwidth*j, labelheight*i, labelwidth, labelheight )];
-            [label[j][i] setTitle:@"" forState:UIControlStateNormal];
-            label[j][i].backgroundColor =[UIColor colorWithRed:0.61 green:1.0f blue:1.0f alpha:1.0f];
-            [scr addSubview:label[j][i]];
+            button[j][i] = [[UIButton alloc]initWithFrame:CGRectMake(buttonwidth*j, buttonheight*i, buttonwidth, buttonheight )];
+            [button[j][i] setTitle:@"" forState:UIControlStateNormal];
+            button[j][i].backgroundColor =[UIColor colorWithRed:0.61 green:1.0f blue:1.0f alpha:1.0f];
+            [scr addSubview:button[j][i]];
             
             if(! (j == 0 || i == 0) ){
                 
-               [label[j][i] addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+               [button[j][i] addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
                
             }
             
@@ -67,19 +67,19 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
             
             if(i == 1 && j == 0){
              
-                [label[j][i] addTarget:self action:@selector(showpicker1:) forControlEvents:UIControlEventTouchUpInside];
+                [button[j][i] addTarget:self action:@selector(showpicker1:) forControlEvents:UIControlEventTouchUpInside];
             }
             
             else {
-                [label[j][i] addTarget:self action:@selector(hidepicker:) forControlEvents:UIControlEventTouchUpInside];
+                [button[j][i] addTarget:self action:@selector(hidepicker:) forControlEvents:UIControlEventTouchUpInside];
             }
             
             
             
         
-            label[j][i].layer.borderColor = [UIColor blueColor].CGColor;
-            label[j][i].layer.borderWidth = 1.0f;
-            label[j][i].layer.cornerRadius = 0.0f;
+            button[j][i].layer.borderColor = [UIColor blueColor].CGColor;
+            button[j][i].layer.borderWidth = 1.0f;
+            button[j][i].layer.cornerRadius = 0.0f;
         
         }
     }
@@ -87,24 +87,24 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
     
     
     for(int i = 0; i <WIDTH_BLOCK_NUM; i++){
-        label[i][0].backgroundColor = [UIColor colorWithRed:1.0f green:0.63f blue:0.81f alpha:1.0f];
+        button[i][0].backgroundColor = [UIColor colorWithRed:1.0f green:0.63f blue:0.81f alpha:1.0f];
     }
     
     
     for(int i =0; i <HEIGHT_BLOCK_NUM; i++){
         //iをY座標としてiを増やすのをループさせることで縦全てを黄色に
-        label[0][i].backgroundColor = [UIColor colorWithRed:0.75f green:0.51f blue:1.0f alpha:1.0f];
+        button[0][i].backgroundColor = [UIColor colorWithRed:0.75f green:0.51f blue:1.0f alpha:1.0f];
     }
     
     for(int i = 0; i <HEIGHT_BLOCK_NUM; i++){
-        [label[0][i] setTitle:[NSString stringWithFormat:@"%d" , i] forState:UIControlStateNormal];
+        [button[0][i] setTitle:[NSString stringWithFormat:@"%d" , i] forState:UIControlStateNormal];
         
 
     }
     
     //iはWIDTH_BLOCK_NUM-1になる、最終的に。dayoftheweekの配列の最大数(WIDTH_BLOCK_NUM-1)まで0から1づつ足していく。
     for(int i = 0; i<WIDTH_BLOCK_NUM; i++){
-        [label[i][0] setTitle:dayoftheweek[i] forState:UIControlStateNormal];
+        [button[i][0] setTitle:dayoftheweek[i] forState:UIControlStateNormal];
     }
     
     
@@ -262,12 +262,12 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
 }
 
 
--(void)buttonAction:(UIButton*)button{
-    [button setTitle:subject.text forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    button.titleLabel.numberOfLines = 2;
-    button.titleLabel.font = [UIFont systemFontOfSize:12];
-    button.titleEdgeInsets = UIEdgeInsetsMake(HEIGHT_BLOCK_NUM, WIDTH_BLOCK_NUM-5 , 0,0);
+-(void)buttonAction:(UIButton*)btn{
+    [btn setTitle:subject.text forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    btn.titleLabel.numberOfLines = 2;
+    btn.titleLabel.font = [UIFont systemFontOfSize:12];
+    btn.titleEdgeInsets = UIEdgeInsetsMake(HEIGHT_BLOCK_NUM, WIDTH_BLOCK_NUM-5 , 0,0);
     
 }
 

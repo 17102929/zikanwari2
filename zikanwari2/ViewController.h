@@ -28,7 +28,7 @@ const static int TEXTFIELD_HEIGHT = 30;
 
 
 @interface ViewController : UIViewController<UITextFieldDelegate>{
-    UIButton *label[WIDTH_BLOCK_NUM][HEIGHT_BLOCK_NUM], *save;
+    UIButton *button[WIDTH_BLOCK_NUM][HEIGHT_BLOCK_NUM], *save;
     UITextField *subject,*roomNumber,*teacher;
     UIScrollView *scr;
     NSArray *itemsofsegment;
