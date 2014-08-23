@@ -12,7 +12,7 @@
 
 @end
 
-static NSString *const dayoftheweek[m_WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"水", @"木", @"金", @"土",};
+static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"水", @"木", @"金", @"土",};
 
 @implementation ViewController
 
@@ -43,15 +43,15 @@ static NSString *const dayoftheweek[m_WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", 
     CGSize whole = [[UIScreen mainScreen]bounds].size;
     
     //一つのラベルのX座標の変数
-    float buttonwidth = whole.width/m_WIDTH_BLOCK_NUM ;
+    float buttonwidth = whole.width/WIDTH_BLOCK_NUM ;
     
     
     //一つのラベルのY座標の変数
-    float buttonheight = (whole.height-m_BOTTOM_HEIGHT)/m_HEIGHT_BLOCK_NUM;
+    float buttonheight = (whole.height-BOTTOM_HEIGHT)/HEIGHT_BLOCK_NUM;
     
     
-    for(int i = 0; i <m_HEIGHT_BLOCK_NUM; i++){
-        for(int j = 0; j<m_WIDTH_BLOCK_NUM ; j++){
+    for(int i = 0; i <HEIGHT_BLOCK_NUM; i++){
+        for(int j = 0; j<WIDTH_BLOCK_NUM ; j++){
             m_button[j][i] = [[UIButton alloc]initWithFrame:CGRectMake(buttonwidth*j, buttonheight*i, buttonwidth, buttonheight )];
             [m_button[j][i] setTitle:@"" forState:UIControlStateNormal];
             m_button[j][i].backgroundColor =[UIColor colorWithRed:0.61 green:1.0f blue:1.0f alpha:1.0f];
@@ -73,55 +73,53 @@ static NSString *const dayoftheweek[m_WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", 
             else {
                 [m_button[j][i] addTarget:self action:@selector(hidepicker:) forControlEvents:UIControlEventTouchUpInside];
             }
-            
-            
-            
         
             m_button[j][i].layer.borderColor = [UIColor blueColor].CGColor;
             m_button[j][i].layer.borderWidth = 1.0f;
             m_button[j][i].layer.cornerRadius = 0.0f;
         
         }
+        
     }
     
     
     
-    for(int i = 0; i <m_WIDTH_BLOCK_NUM ; i++){
+    for(int i = 0; i <WIDTH_BLOCK_NUM ; i++){
         m_button[i][0].backgroundColor = [UIColor colorWithRed:1.0f green:0.63f blue:0.81f alpha:1.0f];
-    }
+           }
     
     
-    for(int i =0; i <m_HEIGHT_BLOCK_NUM; i++){
+    for(int i =0; i <HEIGHT_BLOCK_NUM; i++){
         //iをY座標としてiを増やすのをループさせることで縦全てを黄色に
         m_button[0][i].backgroundColor = [UIColor colorWithRed:0.75f green:0.51f blue:1.0f alpha:1.0f];
     }
     
-    for(int i = 0; i <m_HEIGHT_BLOCK_NUM; i++){
+    for(int i = 0; i <HEIGHT_BLOCK_NUM; i++){
         [m_button[0][i] setTitle:[NSString stringWithFormat:@"%d" , i] forState:UIControlStateNormal];
         
 
     }
     
-    //iはm_WIDTH_BLOCK_NUM -1になる、最終的に。dayoftheweekの配列の最大数(m_WIDTH_BLOCK_NUM -1)まで0から1づつ足していく。
-    for(int i = 0; i<m_WIDTH_BLOCK_NUM ; i++){
+    //iはWIDTH_BLOCK_NUM -1になる、最終的に。dayoftheweekの配列の最大数(WIDTH_BLOCK_NUM -1)まで0から1づつ足していく。
+    for(int i = 0; i<WIDTH_BLOCK_NUM ; i++){
         [m_button[i][0] setTitle:dayoftheweek[i] forState:UIControlStateNormal];
     }
     
     
-    m_subject = [[UITextField alloc]initWithFrame:CGRectMake(164-m_TEXTFIELD_WIDTH/2,
+    m_subject = [[UITextField alloc]initWithFrame:CGRectMake(164-TEXTFIELD_WIDTH/2,
                                                            484,
-                                                           m_TEXTFIELD_WIDTH,
-                                                           m_TEXTFIELD_HEIGHT)];
+                                                           TEXTFIELD_WIDTH,
+                                                           TEXTFIELD_HEIGHT)];
     
-    m_roomNumber = [[UITextField alloc]initWithFrame:CGRectMake(74-m_TEXTFIELD_WIDTH/2,
+    m_roomNumber = [[UITextField alloc]initWithFrame:CGRectMake(74-TEXTFIELD_WIDTH/2,
                                                               534,
-                                                              m_TEXTFIELD_WIDTH,
-                                                              m_TEXTFIELD_HEIGHT)];
+                                                              TEXTFIELD_WIDTH,
+                                                              TEXTFIELD_HEIGHT)];
     
-    m_teacher = [[UITextField alloc]initWithFrame:CGRectMake(252-m_TEXTFIELD_WIDTH/2,
+    m_teacher = [[UITextField alloc]initWithFrame:CGRectMake(252-TEXTFIELD_WIDTH/2,
                                                            534,
-                                                           m_TEXTFIELD_WIDTH,
-                                                           m_TEXTFIELD_HEIGHT)];
+                                                           TEXTFIELD_WIDTH,
+                                                           TEXTFIELD_HEIGHT)];
         
 
     m_scr.frame = self.view.bounds;
@@ -267,16 +265,25 @@ static NSString *const dayoftheweek[m_WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", 
     [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     btn.titleLabel.numberOfLines = 2;
     btn.titleLabel.font = [UIFont systemFontOfSize:12];
-    btn.titleEdgeInsets = UIEdgeInsetsMake(m_HEIGHT_BLOCK_NUM, m_WIDTH_BLOCK_NUM  -5 , 0,0);
+    btn.titleEdgeInsets = UIEdgeInsetsMake(HEIGHT_BLOCK_NUM, WIDTH_BLOCK_NUM  -5 , 0,0);
     
 }
 
 
--(void)showpicker1:(UIButton*)button{
+-(void)showpicker1:(UIButton*)button{//ここでいうbuttonは押されたボタンね。
     m_datepicker.hidden = NO;
     m_subject.hidden = YES;
     m_roomNumber.hidden = YES;
     m_teacher.hidden = YES;
+    
+    for(int i=1; i<HEIGHT_BLOCK_NUM;i++){
+        if(button == m_button[0][i]){
+            
+        }
+    }
+        
+            
+        
     
 }
 
