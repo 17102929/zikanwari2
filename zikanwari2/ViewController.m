@@ -65,9 +65,9 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
             
         
             
-            if(!(j == 0 && i == 0   )&& j==0){
+            if(i == 1 && j == 0){
              
-                [label[j][i] addTarget:self action:@selector(showpicker:) forControlEvents:UIControlEventTouchUpInside];
+                [label[j][i] addTarget:self action:@selector(showpicker1:) forControlEvents:UIControlEventTouchUpInside];
             }
             
             else {
@@ -176,6 +176,10 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
     tosegment.backgroundColor = [UIColor colorWithRed:1.0f green:0.66f blue:1.0f alpha:1.0];*/
     
     
+    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+    
+    
+    
     
     
 }
@@ -268,7 +272,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
 }
 
 
--(void)showpicker:(UIButton*)button{
+-(void)showpicker1:(UIButton*)button{
     datepicker.hidden = NO;
     subject.hidden = YES;
     roomNumber.hidden = YES;
@@ -284,14 +288,6 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
     roomNumber.hidden = NO;
     teacher.hidden = NO;
 }
-
-
--(void)timeselected:(UIDatePicker*)picker{
-    
-}
-
-
-
 
 
 
