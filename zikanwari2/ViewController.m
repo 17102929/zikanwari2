@@ -22,14 +22,22 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
     
     [super viewDidLoad];
     
-    datepicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0 , 408, 300, 30)];
-    [scr addSubview:datepicker];
-    datepicker.hidden =YES;
-    
-    
     
     scr = [[UIScrollView alloc]init];
     [self.view addSubview:scr];
+
+    
+    datepicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0 , 408, 300, 30)];
+    datepicker.minuteInterval = 5;
+    datepicker.hidden =YES;
+    datepicker.backgroundColor = [UIColor colorWithRed:1.0f green:0.9f blue:0.81f alpha:1.0];
+    datepicker.datePickerMode = UIDatePickerModeTime;
+    [scr addSubview:datepicker];
+
+    
+    
+    
+    
     
     //画面サイズの取得
     CGSize whole = [[UIScreen mainScreen]bounds].size;
@@ -51,16 +59,21 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
             
             if(! (j == 0 || i == 0) ){
                 
-                [label[j][i] addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchDown];
+               [label[j][i] addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+               
             }
             
         
             
-            if(!(j == 0 && i == 0 )){
+            if(!(j == 0 && i == 0   )&& j==0){
              
-                datepicker.hidden = NO;
-                
+                [label[j][i] addTarget:self action:@selector(showpicker:) forControlEvents:UIControlEventTouchUpInside];
             }
+            
+            else {
+                [label[j][i] addTarget:self action:@selector(hidepicker:) forControlEvents:UIControlEventTouchUpInside];
+            }
+            
             
             
         
@@ -186,7 +199,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
                                              selector:@selector(keyboardWillBeHidden:)
                                                  name:UIKeyboardWillHideNotification object:nil];
     
-    
+
     
 }
 
@@ -255,19 +268,31 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
 }
 
 
+-(void)showpicker:(UIButton*)button{
+    datepicker.hidden = NO;
+    subject.hidden = YES;
+    roomNumber.hidden = YES;
+    teacher.hidden = YES;
+    
+}
+
+
+
+-(void)hidepicker:(UIButton*)button{
+    datepicker.hidden =YES;
+    subject.hidden = NO;
+    roomNumber.hidden = NO;
+    teacher.hidden = NO;
+}
+
+
+-(void)timeselected:(UIDatePicker*)picker{
+    
+}
 
 
 
 
-
-/*-(void)showlog
-{
-    for(int i = 0; i <HEIGHT_BLOCK_NUM; i++){
-        for(int j = 0; j<WIDTH_BLOCK_NUM; j++){
-            NSLog(@"[%d][%d] %@", i, j,label[i][j]);
-        }
-    }
-}*/
 
 
 @end
