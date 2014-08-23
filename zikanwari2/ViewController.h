@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-const static int WIDTH_BLOCK_NUM = 7;
-const static int HEIGHT_BLOCK_NUM = 8;
+const static int m_WIDTH_BLOCK_NUM = 7;
+const static int m_HEIGHT_BLOCK_NUM = 8;
 
 
-const static int BOTTOM_HEIGHT = 100;
+const static int m_BOTTOM_HEIGHT = 100;
 
-const static int TEXTFIELD_WIDTH = 100;
-const static int TEXTFIELD_HEIGHT = 30;
+const static int m_TEXTFIELD_WIDTH = 100;
+const static int m_TEXTFIELD_HEIGHT = 30;
 
 //#define COLOR_PURPLE [UIColor colorWithRed:0.75f green:0.51f blue:1.0f alpha:1.0f]
 //#define COLOR_SKYBLUE [UIColor colorWithRed:0.61 green:1.0f blue:1.0f alpha:1.0f]
@@ -28,11 +28,10 @@ const static int TEXTFIELD_HEIGHT = 30;
 
 
 @interface ViewController : UIViewController<UITextFieldDelegate>{
-    UIButton *button[WIDTH_BLOCK_NUM][HEIGHT_BLOCK_NUM], *save;
-    UITextField *subject,*roomNumber,*teacher;
-    UIScrollView *scr;
-    NSArray *itemsofsegment;
-    UIDatePicker *datepicker;
+    UIButton *m_button[WIDTH_BLOCK_NUM][HEIGHT_BLOCK_NUM];
+    UITextField *m_subject,*m_roomNumber,*m_teacher;
+    UIScrollView *m_scr;
+    UIDatePicker *m_datepicker;
     
 }
 

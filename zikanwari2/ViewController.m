@@ -12,7 +12,7 @@
 
 @end
 
-static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"水", @"木", @"金", @"土",};
+static NSString *const dayoftheweek[m_WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"水", @"木", @"金", @"土",};
 
 @implementation ViewController
 
@@ -23,16 +23,16 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
     [super viewDidLoad];
     
     
-    scr = [[UIScrollView alloc]init];
-    [self.view addSubview:scr];
+    m_scr = [[UIScrollView alloc]init];
+    [self.view addSubview:m_scr];
 
     
-    datepicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0 , 408, 300, 30)];
-    datepicker.minuteInterval = 5;
-    datepicker.hidden =YES;
-    datepicker.backgroundColor = [UIColor colorWithRed:1.0f green:0.9f blue:0.81f alpha:1.0];
-    datepicker.datePickerMode = UIDatePickerModeTime;
-    [scr addSubview:datepicker];
+    m_datepicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0 , 408, 300, 30)];
+    m_datepicker.minuteInterval = 5;
+    m_datepicker.hidden =YES;
+    m_datepicker.backgroundColor = [UIColor colorWithRed:1.0f green:0.9f blue:0.81f alpha:1.0];
+    m_datepicker.datePickerMode = UIDatePickerModeTime;
+    [m_scr addSubview:m_datepicker];
 
     
     
@@ -43,23 +43,23 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
     CGSize whole = [[UIScreen mainScreen]bounds].size;
     
     //一つのラベルのX座標の変数
-    float buttonwidth = whole.width/WIDTH_BLOCK_NUM;
+    float buttonwidth = whole.width/m_WIDTH_BLOCK_NUM ;
     
     
     //一つのラベルのY座標の変数
-    float buttonheight = (whole.height-BOTTOM_HEIGHT)/HEIGHT_BLOCK_NUM;
+    float buttonheight = (whole.height-m_BOTTOM_HEIGHT)/m_HEIGHT_BLOCK_NUM;
     
     
-    for(int i = 0; i <HEIGHT_BLOCK_NUM; i++){
-        for(int j = 0; j<WIDTH_BLOCK_NUM; j++){
-            button[j][i] = [[UIButton alloc]initWithFrame:CGRectMake(buttonwidth*j, buttonheight*i, buttonwidth, buttonheight )];
-            [button[j][i] setTitle:@"" forState:UIControlStateNormal];
-            button[j][i].backgroundColor =[UIColor colorWithRed:0.61 green:1.0f blue:1.0f alpha:1.0f];
-            [scr addSubview:button[j][i]];
+    for(int i = 0; i <m_HEIGHT_BLOCK_NUM; i++){
+        for(int j = 0; j<m_WIDTH_BLOCK_NUM ; j++){
+            m_button[j][i] = [[UIButton alloc]initWithFrame:CGRectMake(buttonwidth*j, buttonheight*i, buttonwidth, buttonheight )];
+            [m_button[j][i] setTitle:@"" forState:UIControlStateNormal];
+            m_button[j][i].backgroundColor =[UIColor colorWithRed:0.61 green:1.0f blue:1.0f alpha:1.0f];
+            [m_scr addSubview:m_button[j][i]];
             
             if(! (j == 0 || i == 0) ){
                 
-               [button[j][i] addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+               [m_button[j][i] addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
                
             }
             
@@ -67,111 +67,111 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
             
             if(i == 1 && j == 0){
              
-                [button[j][i] addTarget:self action:@selector(showpicker1:) forControlEvents:UIControlEventTouchUpInside];
+                [m_button[j][i] addTarget:self action:@selector(showpicker1:) forControlEvents:UIControlEventTouchUpInside];
             }
             
             else {
-                [button[j][i] addTarget:self action:@selector(hidepicker:) forControlEvents:UIControlEventTouchUpInside];
+                [m_button[j][i] addTarget:self action:@selector(hidepicker:) forControlEvents:UIControlEventTouchUpInside];
             }
             
             
             
         
-            button[j][i].layer.borderColor = [UIColor blueColor].CGColor;
-            button[j][i].layer.borderWidth = 1.0f;
-            button[j][i].layer.cornerRadius = 0.0f;
+            m_button[j][i].layer.borderColor = [UIColor blueColor].CGColor;
+            m_button[j][i].layer.borderWidth = 1.0f;
+            m_button[j][i].layer.cornerRadius = 0.0f;
         
         }
     }
     
     
     
-    for(int i = 0; i <WIDTH_BLOCK_NUM; i++){
-        button[i][0].backgroundColor = [UIColor colorWithRed:1.0f green:0.63f blue:0.81f alpha:1.0f];
+    for(int i = 0; i <m_WIDTH_BLOCK_NUM ; i++){
+        m_button[i][0].backgroundColor = [UIColor colorWithRed:1.0f green:0.63f blue:0.81f alpha:1.0f];
     }
     
     
-    for(int i =0; i <HEIGHT_BLOCK_NUM; i++){
+    for(int i =0; i <m_HEIGHT_BLOCK_NUM; i++){
         //iをY座標としてiを増やすのをループさせることで縦全てを黄色に
-        button[0][i].backgroundColor = [UIColor colorWithRed:0.75f green:0.51f blue:1.0f alpha:1.0f];
+        m_button[0][i].backgroundColor = [UIColor colorWithRed:0.75f green:0.51f blue:1.0f alpha:1.0f];
     }
     
-    for(int i = 0; i <HEIGHT_BLOCK_NUM; i++){
-        [button[0][i] setTitle:[NSString stringWithFormat:@"%d" , i] forState:UIControlStateNormal];
+    for(int i = 0; i <m_HEIGHT_BLOCK_NUM; i++){
+        [m_button[0][i] setTitle:[NSString stringWithFormat:@"%d" , i] forState:UIControlStateNormal];
         
 
     }
     
-    //iはWIDTH_BLOCK_NUM-1になる、最終的に。dayoftheweekの配列の最大数(WIDTH_BLOCK_NUM-1)まで0から1づつ足していく。
-    for(int i = 0; i<WIDTH_BLOCK_NUM; i++){
-        [button[i][0] setTitle:dayoftheweek[i] forState:UIControlStateNormal];
+    //iはm_WIDTH_BLOCK_NUM -1になる、最終的に。dayoftheweekの配列の最大数(m_WIDTH_BLOCK_NUM -1)まで0から1づつ足していく。
+    for(int i = 0; i<m_WIDTH_BLOCK_NUM ; i++){
+        [m_button[i][0] setTitle:dayoftheweek[i] forState:UIControlStateNormal];
     }
     
     
-    subject = [[UITextField alloc]initWithFrame:CGRectMake(164-TEXTFIELD_WIDTH/2,
+    m_subject = [[UITextField alloc]initWithFrame:CGRectMake(164-m_TEXTFIELD_WIDTH/2,
                                                            484,
-                                                           TEXTFIELD_WIDTH,
-                                                           TEXTFIELD_HEIGHT)];
+                                                           m_TEXTFIELD_WIDTH,
+                                                           m_TEXTFIELD_HEIGHT)];
     
-    roomNumber = [[UITextField alloc]initWithFrame:CGRectMake(74-TEXTFIELD_WIDTH/2,
+    m_roomNumber = [[UITextField alloc]initWithFrame:CGRectMake(74-m_TEXTFIELD_WIDTH/2,
                                                               534,
-                                                              TEXTFIELD_WIDTH,
-                                                              TEXTFIELD_HEIGHT)];
+                                                              m_TEXTFIELD_WIDTH,
+                                                              m_TEXTFIELD_HEIGHT)];
     
-    teacher = [[UITextField alloc]initWithFrame:CGRectMake(252-TEXTFIELD_WIDTH/2,
+    m_teacher = [[UITextField alloc]initWithFrame:CGRectMake(252-m_TEXTFIELD_WIDTH/2,
                                                            534,
-                                                           TEXTFIELD_WIDTH,
-                                                           TEXTFIELD_HEIGHT)];
+                                                           m_TEXTFIELD_WIDTH,
+                                                           m_TEXTFIELD_HEIGHT)];
         
 
-    scr.frame = self.view.bounds;
+    m_scr.frame = self.view.bounds;
     
     
-    [scr addSubview:subject];
-    [scr addSubview:roomNumber];
-    [scr addSubview:teacher];
+    [m_scr addSubview:m_subject];
+    [m_scr addSubview:m_roomNumber];
+    [m_scr addSubview:m_teacher];
     
-    subject.borderStyle = UITextBorderStyleRoundedRect;
-    subject.returnKeyType = UIReturnKeyNext;
-    subject.placeholder = @"subject";
-    subject.delegate = self;
-    subject.textAlignment = NSTextAlignmentCenter;
-    subject.adjustsFontSizeToFitWidth = YES;
+    m_subject.borderStyle = UITextBorderStyleRoundedRect;
+    m_subject.returnKeyType = UIReturnKeyNext;
+    m_subject.placeholder = @"m_subject";
+    m_subject.delegate = self;
+    m_subject.textAlignment = NSTextAlignmentCenter;
+    m_subject.adjustsFontSizeToFitWidth = YES;
     
    
     
     
     
-    roomNumber.borderStyle = UITextBorderStyleRoundedRect;
-    roomNumber.returnKeyType = UIReturnKeyNext;
-    roomNumber.placeholder = @"room";
-    roomNumber.delegate = self;
-    roomNumber.textAlignment = NSTextAlignmentCenter;
-    roomNumber.adjustsFontSizeToFitWidth = YES;
+    m_roomNumber.borderStyle = UITextBorderStyleRoundedRect;
+    m_roomNumber.returnKeyType = UIReturnKeyNext;
+    m_roomNumber.placeholder = @"room";
+    m_roomNumber.delegate = self;
+    m_roomNumber.textAlignment = NSTextAlignmentCenter;
+    m_roomNumber.adjustsFontSizeToFitWidth = YES;
     
     
     
-    teacher.borderStyle = UITextBorderStyleRoundedRect;
-    teacher.returnKeyType = UIReturnKeyDone;
-    teacher.placeholder = @"teacher";
-    teacher.delegate = self;
-    teacher.textAlignment = NSTextAlignmentCenter;
-    teacher.adjustsFontSizeToFitWidth = YES;
+    m_teacher.borderStyle = UITextBorderStyleRoundedRect;
+    m_teacher.returnKeyType = UIReturnKeyDone;
+    m_teacher.placeholder = @"m_teacher";
+    m_teacher.delegate = self;
+    m_teacher.textAlignment = NSTextAlignmentCenter;
+    m_teacher.adjustsFontSizeToFitWidth = YES;
     
     
     [self registerForKeyboardNotifications];
     
-    scr.backgroundColor = [UIColor colorWithRed:0.81f green:1.0f blue:0.81f alpha:1.0f];
+    m_scr.backgroundColor = [UIColor colorWithRed:0.81f green:1.0f blue:0.81f alpha:1.0f];
     
     
     /*itemsofsegment = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", @"6", @"7", nil];
     segment = [[UISegmentedControl alloc]initWithItems:itemsofsegment];
     segment.frame = CGRectMake(15, 500, 300, 30);
-    [scr addSubview:segment];
+    [m_scr addSubview:segment];
     //segment.hidden = YES;
     segment.backgroundColor = [UIColor greenColor];
     tosegment = [[UIButton alloc]initWithFrame:CGRectMake(10, 475, 45, 45)];
-    [scr addSubview:tosegment];
+    [m_scr addSubview:tosegment];
     [tosegment addTarget:self action:@selector(pushedtosegment:)forControlEvents:UIControlEventTouchUpInside];
     tosegment.backgroundColor = [UIColor colorWithRed:1.0f green:0.66f blue:1.0f alpha:1.0];*/
     
@@ -217,13 +217,13 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
 {
     
     
-    CGPoint scrollPoint = CGPointMake(0.0,250.0);
-    [scr setContentOffset:scrollPoint animated:YES];
+    CGPoint m_scrollPoint = CGPointMake(0.0,250.0);
+    [m_scr setContentOffset:m_scrollPoint animated:YES];
 }
 
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
-    [scr setContentOffset:CGPointZero animated:YES];
+    [m_scr setContentOffset:CGPointZero animated:YES];
     
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -242,16 +242,16 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
         
     }
     else{
-        if(subject == textField){
-            [roomNumber becomeFirstResponder];
+        if(m_subject == textField){
+            [m_roomNumber becomeFirstResponder];
         }
         // [self.view endEditing:YES];
         
-        else if (roomNumber == textField){
-            [teacher becomeFirstResponder];
+        else if (m_roomNumber == textField){
+            [m_teacher becomeFirstResponder];
         }
         
-        else if (teacher == textField){
+        else if (m_teacher == textField){
             [self.view endEditing:YES];
         }
     }
@@ -263,30 +263,30 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM] = {@"", @"月", @"火", @"�
 
 
 -(void)buttonAction:(UIButton*)btn{
-    [btn setTitle:subject.text forState:UIControlStateNormal];
+    [btn setTitle:m_subject.text forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     btn.titleLabel.numberOfLines = 2;
     btn.titleLabel.font = [UIFont systemFontOfSize:12];
-    btn.titleEdgeInsets = UIEdgeInsetsMake(HEIGHT_BLOCK_NUM, WIDTH_BLOCK_NUM-5 , 0,0);
+    btn.titleEdgeInsets = UIEdgeInsetsMake(m_HEIGHT_BLOCK_NUM, m_WIDTH_BLOCK_NUM  -5 , 0,0);
     
 }
 
 
 -(void)showpicker1:(UIButton*)button{
-    datepicker.hidden = NO;
-    subject.hidden = YES;
-    roomNumber.hidden = YES;
-    teacher.hidden = YES;
+    m_datepicker.hidden = NO;
+    m_subject.hidden = YES;
+    m_roomNumber.hidden = YES;
+    m_teacher.hidden = YES;
     
 }
 
 
 
 -(void)hidepicker:(UIButton*)button{
-    datepicker.hidden =YES;
-    subject.hidden = NO;
-    roomNumber.hidden = NO;
-    teacher.hidden = NO;
+    m_datepicker.hidden =YES;
+    m_subject.hidden = NO;
+    m_roomNumber.hidden = NO;
+    m_teacher.hidden = NO;
 }
 
 
