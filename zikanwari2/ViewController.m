@@ -32,7 +32,13 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     m_datepicker.hidden =YES;
     m_datepicker.backgroundColor = [UIColor colorWithRed:1.0f green:0.9f blue:0.81f alpha:1.0];
     m_datepicker.datePickerMode = UIDatePickerModeTime;
+    
     [m_scr addSubview:m_datepicker];
+    pickerdone = [[UIButton alloc]initWithFrame:CGRectMake(300,408,50,50)];
+    pickerdone.backgroundColor = [UIColor redColor];
+    [m_scr addSubview:pickerdone];
+    
+    
 
     
     
@@ -131,7 +137,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     
     m_subject.borderStyle = UITextBorderStyleRoundedRect;
     m_subject.returnKeyType = UIReturnKeyNext;
-    m_subject.placeholder = @"m_subject";
+    m_subject.placeholder = @"subject";
     m_subject.delegate = self;
     m_subject.textAlignment = NSTextAlignmentCenter;
     m_subject.adjustsFontSizeToFitWidth = YES;
@@ -151,7 +157,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     
     m_teacher.borderStyle = UITextBorderStyleRoundedRect;
     m_teacher.returnKeyType = UIReturnKeyDone;
-    m_teacher.placeholder = @"m_teacher";
+    m_teacher.placeholder = @"teacher";
     m_teacher.delegate = self;
     m_teacher.textAlignment = NSTextAlignmentCenter;
     m_teacher.adjustsFontSizeToFitWidth = YES;
@@ -161,13 +167,8 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     
     m_scr.backgroundColor = [UIColor colorWithRed:0.81f green:1.0f blue:0.81f alpha:1.0f];
     
-    m_date[1] = m_datepicker.date;
-    m_date[2] = m_datepicker.date;
-    m_date[3] = m_datepicker.date;
-    m_date[4] = m_datepicker.date;
-    m_date[5] = m_datepicker.date;
-    m_date[6] = m_datepicker.date;
-    m_date[7] = m_datepicker.date;
+    
+    
    
     
     
@@ -289,39 +290,17 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
             //NSLog(@"%d" , i);
             
             
-        }
-        
-        *m_userdefault = [NSUserDefaults standardUserDefaults];
-        switch (i) {
-            case 1:
-                 [*m_userdefault setObject:m_date[1] forKey:[NSString stringWithFormat:@"%d" , i]];
-                break;
-                
-            case 2:
-                 [*m_userdefault setObject:m_date[2] forKey:[NSString stringWithFormat:@"%d" , i]];
-                break;
-                
-            case 3:
-                 [*m_userdefault setObject:m_date[3] forKey:[NSString stringWithFormat:@"%d" , i]];
-                break;
-            case 4:
-                 [*m_userdefault setObject:m_date[4] forKey:[NSString stringWithFormat:@"%d" , i]];
-                break;
-            case 5:
-                 [*m_userdefault setObject:m_date[5] forKey:[NSString stringWithFormat:@"%d" , i]];
-                break;
-            case 6:
-                 [*m_userdefault setObject:m_date[6] forKey:[NSString stringWithFormat:@"%d" , i]];
-                break;
-            case 7:
-                 [*m_userdefault setObject:m_date[7] forKey:[NSString stringWithFormat:@"%d" , i]];
-                break;
-        }
-        
-        NSDate *date;
-        if(m_date[8] == date){
+            
             
         }
+        
+        NSDate *m_date[i];
+        
+         m_date[i] = [[NSDate alloc]init];
+        NSUserDefaults *m_userdefault;
+        m_userdefault = [[NSUserDefaults alloc]init];
+        [m_userdefault setObject:m_date[i] forKey:[NSString stringWithFormat:@"%d" , i]];
+       
     
     }
     
