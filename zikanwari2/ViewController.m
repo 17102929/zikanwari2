@@ -286,7 +286,9 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     
     for(int i=1; i<HEIGHT_BLOCK_NUM;i++){
         if(button == m_button[0][i]){
-            NSLog(@"%d" , i);
+            //NSLog(@"%d" , i);
+            
+            
         }
         
         if(i == 1){
@@ -308,6 +310,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
         if(i == 3){
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject:date[3] forKey:[NSString stringWithFormat:@"%d" , i]];
+            
             
         }
         
@@ -347,6 +350,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     m_subject.hidden = NO;
     m_roomNumber.hidden = NO;
     m_teacher.hidden = NO;
+    
 }
 
 
@@ -359,6 +363,16 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
  [defaults setObject:@"hoge" forKey:@"KEY_S"];  // をKEY_Sというキーの初期値はhoge
  [ud registerDefaults:defaults];
  */
+
+
+-(void)makenotification{
+
+    UILocalNotification *notify = [[UILocalNotification alloc]init];
+    notify.fireDate = date[8];
+    notify.alertBody = @"ok";
+    
+    
+}
 
 
 

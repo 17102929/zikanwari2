@@ -35,7 +35,7 @@ const static int TEXTFIELD_HEIGHT = 30;
     NSUserDefaults *userdefault[7];
     NSMutableDictionary *dic[7];
     NSDate *date[8];
-    
+       
     
 }
 
