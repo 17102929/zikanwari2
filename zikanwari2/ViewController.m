@@ -161,13 +161,13 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     
     m_scr.backgroundColor = [UIColor colorWithRed:0.81f green:1.0f blue:0.81f alpha:1.0f];
     
-    date[1] = m_datepicker.date;
-    date[2] = m_datepicker.date;
-    date[3] = m_datepicker.date;
-    date[4] = m_datepicker.date;
-    date[5] = m_datepicker.date;
-    date[6] = m_datepicker.date;
-    date[7] = m_datepicker.date;
+    m_date[1] = m_datepicker.date;
+    m_date[2] = m_datepicker.date;
+    m_date[3] = m_datepicker.date;
+    m_date[4] = m_datepicker.date;
+    m_date[5] = m_datepicker.date;
+    m_date[6] = m_datepicker.date;
+    m_date[7] = m_datepicker.date;
    
     
     
@@ -291,54 +291,45 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
             
         }
         
-        if(i == 1){
-            
-            //ここにUserDefaultを書く
-            //http://iphone-dev.g.hatena.ne.jp/tokorom/20090520/1242789479
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:date[1] forKey:[NSString stringWithFormat:@"%d" , i]];
-            
+        *m_userdefault = [NSUserDefaults standardUserDefaults];
+        switch (i) {
+            case 1:
+                 [*m_userdefault setObject:m_date[1] forKey:[NSString stringWithFormat:@"%d" , i]];
+                break;
+                
+            case 2:
+                 [*m_userdefault setObject:m_date[2] forKey:[NSString stringWithFormat:@"%d" , i]];
+                break;
+                
+            case 3:
+                 [*m_userdefault setObject:m_date[3] forKey:[NSString stringWithFormat:@"%d" , i]];
+                break;
+            case 4:
+                 [*m_userdefault setObject:m_date[4] forKey:[NSString stringWithFormat:@"%d" , i]];
+                break;
+            case 5:
+                 [*m_userdefault setObject:m_date[5] forKey:[NSString stringWithFormat:@"%d" , i]];
+                break;
+            case 6:
+                 [*m_userdefault setObject:m_date[6] forKey:[NSString stringWithFormat:@"%d" , i]];
+                break;
+            case 7:
+                 [*m_userdefault setObject:m_date[7] forKey:[NSString stringWithFormat:@"%d" , i]];
+                break;
         }
         
+        NSDate *date;
+        if(m_date[8] == date){
+            
+        }
     
-        if(i == 2){
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:date[2] forKey:[NSString stringWithFormat:@"%d" , i]];
-            
-        }
-        
-        if(i == 3){
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:date[3] forKey:[NSString stringWithFormat:@"%d" , i]];
-            
-            
-        }
-        
-        if(i == 4){
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:date[4] forKey:[NSString stringWithFormat:@"%d" , i]];
-            
-        }
-        
-        if(i == 5){
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:date[5] forKey:[NSString stringWithFormat:@"%d" , i]];
-            
-        }
-        
-        if(i == 6){
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:date[6] forKey:[NSString stringWithFormat:@"%d" , i]];
-            
-        }
-        
-        if(i == 7){
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:date[7] forKey:[NSString stringWithFormat:@"%d" , i]];
-            
-        }
-        
     }
+    
+    
+    
+    
+    
+    
     
     
 }
@@ -368,7 +359,6 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
 -(void)makenotification{
 
     UILocalNotification *notify = [[UILocalNotification alloc]init];
-    notify.fireDate = date[8];
     notify.alertBody = @"ok";
     
     
