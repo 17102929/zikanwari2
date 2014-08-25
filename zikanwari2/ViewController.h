@@ -32,6 +32,10 @@ const static int TEXTFIELD_HEIGHT = 30;
     UITextField *m_subject,*m_roomNumber,*m_teacher;
     UIScrollView *m_scr;
     UIDatePicker *m_datepicker;
+    NSUserDefaults *userdefault[7];
+    NSMutableDictionary *dic[7];
+    NSDate *date[8];
+    
     
 }
 

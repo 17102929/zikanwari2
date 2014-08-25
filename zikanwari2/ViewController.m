@@ -1,6 +1,6 @@
 //
 //  ViewController.m
-//  zikanwari2
+//  /
 //
 //  Created by Sora Mizuno on 2014/08/19.
 //  Copyright (c) 2014年 Sora Mizuno. All rights reserved.
@@ -65,9 +65,9 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
             
         
             
-            if(i == 1 && j == 0){
+            if(i != 0 && j == 0){
              
-                [m_button[j][i] addTarget:self action:@selector(showpicker1:) forControlEvents:UIControlEventTouchUpInside];
+                [m_button[j][i] addTarget:self action:@selector(showpicker:) forControlEvents:UIControlEventTouchUpInside];
             }
             
             else {
@@ -161,6 +161,15 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     
     m_scr.backgroundColor = [UIColor colorWithRed:0.81f green:1.0f blue:0.81f alpha:1.0f];
     
+    date[1] = m_datepicker.date;
+    date[2] = m_datepicker.date;
+    date[3] = m_datepicker.date;
+    date[4] = m_datepicker.date;
+    date[5] = m_datepicker.date;
+    date[6] = m_datepicker.date;
+    date[7] = m_datepicker.date;
+   
+    
     
     /*itemsofsegment = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", @"6", @"7", nil];
     segment = [[UISegmentedControl alloc]initWithItems:itemsofsegment];
@@ -174,7 +183,6 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     tosegment.backgroundColor = [UIColor colorWithRed:1.0f green:0.66f blue:1.0f alpha:1.0];*/
     
     
-    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
     
     
     
@@ -270,7 +278,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
 }
 
 
--(void)showpicker1:(UIButton*)button{//ここでいうbuttonは押されたボタンね。
+-(void)showpicker:(UIButton*)button{//ここでいうbuttonは押されたボタンね。
     m_datepicker.hidden = NO;
     m_subject.hidden = YES;
     m_roomNumber.hidden = YES;
@@ -278,12 +286,57 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     
     for(int i=1; i<HEIGHT_BLOCK_NUM;i++){
         if(button == m_button[0][i]){
+            NSLog(@"%d" , i);
+        }
+        
+        if(i == 1){
+            
+            //ここにUserDefaultを書く
+            //http://iphone-dev.g.hatena.ne.jp/tokorom/20090520/1242789479
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:date[1] forKey:[NSString stringWithFormat:@"%d" , i]];
             
         }
-    }
         
+    
+        if(i == 2){
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:date[2] forKey:[NSString stringWithFormat:@"%d" , i]];
             
+        }
         
+        if(i == 3){
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:date[3] forKey:[NSString stringWithFormat:@"%d" , i]];
+            
+        }
+        
+        if(i == 4){
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:date[4] forKey:[NSString stringWithFormat:@"%d" , i]];
+            
+        }
+        
+        if(i == 5){
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:date[5] forKey:[NSString stringWithFormat:@"%d" , i]];
+            
+        }
+        
+        if(i == 6){
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:date[6] forKey:[NSString stringWithFormat:@"%d" , i]];
+            
+        }
+        
+        if(i == 7){
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:date[7] forKey:[NSString stringWithFormat:@"%d" , i]];
+            
+        }
+        
+    }
+    
     
 }
 
@@ -295,6 +348,19 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     m_roomNumber.hidden = NO;
     m_teacher.hidden = NO;
 }
+
+
+/*このように。
+ 
+ [defaults setObject:@"99" forKey:@"KEY_I"];  // をKEY_Iというキーの初期値は99
+ [defaults setObject:@"99.99" forKey:@"KEY_F"];  // をKEY_Fというキーの初期値は99.99
+ [defaults setObject:@"88.88" forKey:@"KEY_D"];  // をKEY_Dというキーの初期値は88.88
+ [defaults setObject:@"YES" forKey:@"KEY_B"];  // をKEY_Bというキーの初期値はYES
+ [defaults setObject:@"hoge" forKey:@"KEY_S"];  // をKEY_Sというキーの初期値はhoge
+ [ud registerDefaults:defaults];
+ */
+
+
 
 
 
