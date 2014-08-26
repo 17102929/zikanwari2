@@ -296,7 +296,8 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
         
         NSDate *m_date[i];
         
-         m_date[i] = [[NSDate alloc]init];
+        
+         m_date[i] = [[NSDate alloc]init]; //ここでEXC_BAD_ACCESS
         NSUserDefaults *m_userdefault;
         m_userdefault = [[NSUserDefaults alloc]init];
         [m_userdefault setObject:m_date[i] forKey:[NSString stringWithFormat:@"%d" , i]];
