@@ -27,18 +27,19 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     [self.view addSubview:m_scr];
 
     
-    m_datepicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0 , 408, 300, 30)];
+    m_datepicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0 , 570, 300, 30)];
     m_datepicker.minuteInterval = 5;
-    m_datepicker.hidden =YES;
     m_datepicker.backgroundColor = [UIColor colorWithRed:1.0f green:0.9f blue:0.81f alpha:1.0];
     m_datepicker.datePickerMode = UIDatePickerModeTime;
     
     [m_scr addSubview:m_datepicker];
-    pickerdone = [[UIButton alloc]initWithFrame:CGRectMake(300,408,50,50)];
-    pickerdone.backgroundColor = [UIColor redColor];
-    [m_scr addSubview:pickerdone];
+    m_pickerdone = [[UIButton alloc]initWithFrame:CGRectMake(290,573,30,30)];
+    m_pickerdone.backgroundColor = [UIColor redColor];
+    //いろいろ場所調整
     
-    
+    m_pickerdone.backgroundColor = [UIColor colorWithRed:0.67f green:0.83f blue:1.0f alpha:1.0f];
+    [m_scr addSubview:m_pickerdone];
+    [m_pickerdone addTarget:self action:@selector(datePickerFinished:) forControlEvents:UIControlEventTouchUpInside];
 
     
     
@@ -76,10 +77,6 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
                 [m_button[j][i] addTarget:self action:@selector(showpicker:) forControlEvents:UIControlEventTouchUpInside];
             }
             
-            else {
-                [m_button[j][i] addTarget:self action:@selector(hidepicker:) forControlEvents:UIControlEventTouchUpInside];
-            }
-        
             m_button[j][i].layer.borderColor = [UIColor blueColor].CGColor;
             m_button[j][i].layer.borderWidth = 1.0f;
             m_button[j][i].layer.cornerRadius = 0.0f;
@@ -185,10 +182,6 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     
     
     
-    
-    
-    
-    
 }
 
 
@@ -224,7 +217,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
 {
     
     
-    CGPoint m_scrollPoint = CGPointMake(0.0,250.0);
+    CGPoint m_scrollPoint = CGPointMake(0.0,218.0);
     [m_scr setContentOffset:m_scrollPoint animated:YES];
 }
 
@@ -260,6 +253,8 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
         
         else if (m_teacher == textField){
             [self.view endEditing:YES];
+            m_datepicker.hidden = YES;
+            m_pickerdone.hidden = YES;
         }
     }
 
@@ -280,49 +275,66 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
 
 
 -(void)showpicker:(UIButton*)button{//ここでいうbuttonは押されたボタンね。
+    
+    
+    CGPoint m_scrollPoint = CGPointMake(0.0,200.0);
+    [m_scr setContentOffset:m_scrollPoint animated:YES];
     m_datepicker.hidden = NO;
-    m_subject.hidden = YES;
-    m_roomNumber.hidden = YES;
-    m_teacher.hidden = YES;
+    m_pickerdone.hidden = NO;
+    
+    
+}
+
+-(void)datePickerFinished:(UIButton*)button{
+    
+    [m_scr setContentOffset:CGPointZero animated:YES];
+    
+   // NSDate *date[HEIGHT_BLOCK_NUM-1];
+    //date[HEIGHT_BLOCK_NUM] = [[NSDate alloc]init]; //ここでEXC_BAD_ACCESS
+    //ボタン判定メソッドをぼーん、それに応じて入れるuserdefaultを変えてやる...？
+    NSLog(@"dpfinishedloaded");
     
     for(int i=1; i<HEIGHT_BLOCK_NUM;i++){
         if(button == m_button[0][i]){
-            //NSLog(@"%d" , i);
+            NSLog(@"%d" , i);
             
-            
-            
+            /*if (i == 1){
+                [self save1];
+                [self read];
+            }*/
             
         }
         
-        NSDate *m_date[i];
         
-        
-         m_date[i] = [[NSDate alloc]init]; //ここでEXC_BAD_ACCESS
-        NSUserDefaults *m_userdefault;
-        m_userdefault = [[NSUserDefaults alloc]init];
-        [m_userdefault setObject:m_date[i] forKey:[NSString stringWithFormat:@"%d" , i]];
-       
-    
     }
     
     
-    
-    
-    
-    
-    
+
     
 }
 
 
-
--(void)hidepicker:(UIButton*)button{
-    m_datepicker.hidden =YES;
-    m_subject.hidden = NO;
-    m_roomNumber.hidden = NO;
-    m_teacher.hidden = NO;
+-(void)save1{
+    NSDate *pickerdate1 = m_datepicker.date;
     
+    NSUserDefaults *userdefault1 = [NSUserDefaults standardUserDefaults];
+    //NSDateの保存
+    [userdefault1 setObject:pickerdate1 forKey:@"date1"];
+    NSLog(@"ok");
+
+    
+
 }
+
+-(void)read{
+    NSUserDefaults *forread = [NSUserDefaults standardUserDefaults];
+    NSDate *date = [forread objectForKey:@"date1"];
+    NSLog(@"%@" , date);
+    NSLog(@"ok2");
+
+}
+
+
 
 
 /*このように。

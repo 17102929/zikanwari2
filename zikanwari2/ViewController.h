@@ -33,7 +33,8 @@ const static int TEXTFIELD_HEIGHT = 30;
     UIScrollView *m_scr;
     UIDatePicker *m_datepicker;
     NSMutableDictionary *m_dic[7];
-    UIButton *pickerdone;
+    UIButton *m_pickerdone;
+   
 
     //NSDate *m_date;
        
