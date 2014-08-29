@@ -34,6 +34,22 @@ const static int TEXTFIELD_HEIGHT = 30;
     UIDatePicker *m_datepicker;
     NSMutableDictionary *m_dic[7];
     UIButton *m_pickerdone;
+    NSDate *date1;
+    NSDate *date2;
+    NSDate *date3;
+    NSDate *date4;
+    NSDate *date5;
+    NSDate *date6;
+    NSDate *date7;
+
+    int numforjudge;
+    int a;
+    int b;
+    int c;
+    int d;
+    int f;
+    int g;
+    int h;
    
 
     //NSDate *m_date;

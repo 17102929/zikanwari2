@@ -281,6 +281,26 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     [m_scr setContentOffset:m_scrollPoint animated:YES];
     m_datepicker.hidden = NO;
     m_pickerdone.hidden = NO;
+    m_subject.hidden = YES;
+    m_roomNumber.hidden = YES;
+    m_teacher.hidden = YES;
+    
+    for(int i=1; i<HEIGHT_BLOCK_NUM;i++){
+        if(button == m_button[0][i]){
+            NSLog(@"%d" , i);
+            numforjudge = i;
+        
+            
+            /*if (i == 1){
+             [self save1];
+             [self read];
+             }*/
+            
+        }
+        
+        
+    }
+
     
     
 }
@@ -289,27 +309,51 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     
     [m_scr setContentOffset:CGPointZero animated:YES];
     
+    m_subject.hidden = NO;
+    m_roomNumber.hidden = NO;
+    m_teacher.hidden = NO;
+    
+    
    // NSDate *date[HEIGHT_BLOCK_NUM-1];
     //date[HEIGHT_BLOCK_NUM] = [[NSDate alloc]init]; //ここでEXC_BAD_ACCESS
     //ボタン判定メソッドをぼーん、それに応じて入れるuserdefaultを変えてやる...？
-    NSLog(@"dpfinishedloaded");
+    if(numforjudge == 1){
+        [self save1];
+        [self read1];
+            }
     
-    for(int i=1; i<HEIGHT_BLOCK_NUM;i++){
-        if(button == m_button[0][i]){
-            NSLog(@"%d" , i);
-            
-            /*if (i == 1){
-                [self save1];
-                [self read];
-            }*/
-            
-        }
-        
+    if(numforjudge == 2){
+        [self save2];
+        [self read2];
+           }
+    
+    if(numforjudge == 3){
+        [self save3];
+        [self read3];
+            }
+    
+    if(numforjudge == 4){
+        [self save4];
+        [self read4];
         
     }
     
+    if(numforjudge == 5){
+        [self save5];
+        [self read5];
+    }
     
-
+    if(numforjudge == 6){
+        [self save6];
+        [self read6];
+    }
+    
+    if(numforjudge == 7){
+        [self save7];
+        [self read7];
+    }
+    
+   
     
 }
 
@@ -320,40 +364,137 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     NSUserDefaults *userdefault1 = [NSUserDefaults standardUserDefaults];
     //NSDateの保存
     [userdefault1 setObject:pickerdate1 forKey:@"date1"];
-    NSLog(@"ok");
-
+    
     
 
 }
 
--(void)read{
-    NSUserDefaults *forread = [NSUserDefaults standardUserDefaults];
-    NSDate *date = [forread objectForKey:@"date1"];
-    NSLog(@"%@" , date);
-    NSLog(@"ok2");
+-(void)save2{
+    NSDate *pickerdate2 = m_datepicker.date;
+    
+    NSUserDefaults *userdefault2 = [NSUserDefaults standardUserDefaults];
+    //NSDateの保存
+    [userdefault2 setObject:pickerdate2 forKey:@"date2"];
+    
 
 }
 
+-(void)save3{
+    NSDate *pickerdate3 = m_datepicker.date;
+    
+    NSUserDefaults *userdefault3 = [NSUserDefaults standardUserDefaults];
+    //NSDateの保存
+    [userdefault3 setObject:pickerdate3 forKey:@"date3"];
+    
+
+}
+
+-(void)save4{
+    NSDate *pickerdate4 = m_datepicker.date;
+    
+    NSUserDefaults *userdefault4 = [NSUserDefaults standardUserDefaults];
+    //NSDateの保存
+    [userdefault4 setObject:pickerdate4 forKey:@"date4"];
+   
+}
+
+-(void)save5{
+    NSDate *pickerdate5 = m_datepicker.date;
+    
+    NSUserDefaults *userdefault5 = [NSUserDefaults standardUserDefaults];
+    //NSDateの保存
+    [userdefault5 setObject:pickerdate5 forKey:@"date5"];
+    
+}
+
+-(void)save6{
+    NSDate *pickerdate6 = m_datepicker.date;
+    
+    NSUserDefaults *userdefault6 = [NSUserDefaults standardUserDefaults];
+    //NSDateの保存
+    [userdefault6 setObject:pickerdate6 forKey:@"date6"];
+    
+
+}
+
+-(void)save7{
+    NSDate *pickerdate7 = m_datepicker.date;
+    
+    NSUserDefaults *userdefault7 = [NSUserDefaults standardUserDefaults];
+    //NSDateの保存
+    [userdefault7 setObject:pickerdate7 forKey:@"date7"];
+  
+}
+
+-(void)read1{
+    NSUserDefaults *readdefault1 = [NSUserDefaults standardUserDefaults];
+   date1 = [readdefault1 objectForKey:@"date1"];
+    NSLog(@"%@" , date1);
+    
+
+}
+
+-(void)read2{
+    NSUserDefaults *readdefault2 = [NSUserDefaults standardUserDefaults];
+   date2 = [readdefault2 objectForKey:@"date2"];
+    NSLog(@"%@" , date2);
+
+}
+
+-(void)read3{
+    NSUserDefaults *readdefault3 = [NSUserDefaults standardUserDefaults];
+    date3 = [readdefault3 objectForKey:@"date3"];
+    NSLog(@"%@" , date3);
+
+}
+
+-(void)read4{
+    NSUserDefaults *readdefault4 = [NSUserDefaults standardUserDefaults];
+    date4 = [readdefault4 objectForKey:@"date4"];
+    NSLog(@"%@" , date4);
+
+}
+
+-(void)read5{
+    NSUserDefaults *readdefault5 = [NSUserDefaults standardUserDefaults];
+   date5 = [readdefault5 objectForKey:@"date5"];
+    NSLog(@"%@" , date5);
 
 
+}
 
-/*このように。
- 
- [defaults setObject:@"99" forKey:@"KEY_I"];  // をKEY_Iというキーの初期値は99
- [defaults setObject:@"99.99" forKey:@"KEY_F"];  // をKEY_Fというキーの初期値は99.99
- [defaults setObject:@"88.88" forKey:@"KEY_D"];  // をKEY_Dというキーの初期値は88.88
- [defaults setObject:@"YES" forKey:@"KEY_B"];  // をKEY_Bというキーの初期値はYES
- [defaults setObject:@"hoge" forKey:@"KEY_S"];  // をKEY_Sというキーの初期値はhoge
- [ud registerDefaults:defaults];
- */
+-(void)read6{
+    NSUserDefaults *readdefault6 = [NSUserDefaults standardUserDefaults];
+   date6 = [readdefault6 objectForKey:@"date6"];
+    NSLog(@"%@" , date6);
+}
+
+-(void)read7{
+    NSUserDefaults *readdefault7 = [NSUserDefaults standardUserDefaults];
+  date7 = [readdefault7 objectForKey:@"date7"];
+    NSLog(@"%@" , date7);
+}
+
 
 
 -(void)makenotification{
-
-    UILocalNotification *notify = [[UILocalNotification alloc]init];
-    notify.alertBody = @"ok";
     
     
+    
+    
+    
+    UILocalNotification *notify;
+    notify = [[UILocalNotification alloc]init];
+    notify.alertBody = @"hoge";
+    notify.fireDate = date1;
+    notify.fireDate = date2;
+    notify.fireDate = date3;
+    notify.fireDate = date4;
+    notify.fireDate = date5;
+    notify.fireDate = date6;
+    notify.fireDate = date7;
+    
+    [[UIApplication sharedApplication]scheduleLocalNotification:notify];
 }
 
 
