@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 @class AppDelegate;
 
 @interface ViewController ()
@@ -400,8 +401,6 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
         
     }
     
-  
-
     
 }
 

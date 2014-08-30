@@ -50,6 +50,8 @@ const static int TEXTFIELD_HEIGHT = 30;
     
 }
 
+
+
 //- (IBAction)showlog;
 
 
