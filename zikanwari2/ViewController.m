@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+@class AppDelegate;
 
 @interface ViewController ()
 
@@ -166,6 +167,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     
     
     
+    
    
     
     
@@ -317,7 +319,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
    // NSDate *date[HEIGHT_BLOCK_NUM-1];
     //date[HEIGHT_BLOCK_NUM] = [[NSDate alloc]init]; //ここでEXC_BAD_ACCESS
     //ボタン判定メソッドをぼーん、それに応じて入れるuserdefaultを変えてやる...？
-    if(numforjudge == 1){
+    /*if(numforjudge == 1){
         [self save1];
         [self read1];
             }
@@ -353,10 +355,67 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
         [self read7];
     }
     
-   
+         */
+    
+    
+    
+    
+    switch (numforjudge) {
+        case 1:
+            [self save0];
+            [self read0];
+            break;
+            
+        case 2:
+            [self save1];
+            [self read1];
+            break;
+            
+        case 3:
+            [self save2];
+            [self read2];
+            break;
+            
+        case 4:
+            [self save3];
+            [self read3];
+            break;
+            
+        case 5:
+            [self save4];
+            [self read4];
+            break;
+            
+        case 6:
+            [self save5];
+            [self read5];
+            break;
+            
+        case 7:
+            [self save6];
+            [self read6];
+            break;
+            
+            
+        
+    }
+    
+  
+
     
 }
 
+
+-(void)save0{
+    NSDate *pickerdate0 = m_datepicker.date;
+    
+    NSUserDefaults *userdefault0 = [NSUserDefaults standardUserDefaults];
+    //NSDateの保存
+    [userdefault0 setObject:pickerdate0 forKey:@"date0"];
+    
+    
+
+}
 
 -(void)save1{
     NSDate *pickerdate1 = m_datepicker.date;
@@ -364,7 +423,6 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     NSUserDefaults *userdefault1 = [NSUserDefaults standardUserDefaults];
     //NSDateの保存
     [userdefault1 setObject:pickerdate1 forKey:@"date1"];
-    
     
 
 }
@@ -385,8 +443,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     NSUserDefaults *userdefault3 = [NSUserDefaults standardUserDefaults];
     //NSDateの保存
     [userdefault3 setObject:pickerdate3 forKey:@"date3"];
-    
-
+   
 }
 
 -(void)save4{
@@ -395,7 +452,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     NSUserDefaults *userdefault4 = [NSUserDefaults standardUserDefaults];
     //NSDateの保存
     [userdefault4 setObject:pickerdate4 forKey:@"date4"];
-   
+    
 }
 
 -(void)save5{
@@ -405,6 +462,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     //NSDateの保存
     [userdefault5 setObject:pickerdate5 forKey:@"date5"];
     
+
 }
 
 -(void)save6{
@@ -413,86 +471,75 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     NSUserDefaults *userdefault6 = [NSUserDefaults standardUserDefaults];
     //NSDateの保存
     [userdefault6 setObject:pickerdate6 forKey:@"date6"];
-    
-
+  
 }
 
--(void)save7{
-    NSDate *pickerdate7 = m_datepicker.date;
+-(void)read0{
+    NSUserDefaults *readdefault0 = [NSUserDefaults standardUserDefaults];
+   m_date[0] = [readdefault0 objectForKey:@"date0"];
+    NSLog(@"%@" , m_date[0]);
     
-    NSUserDefaults *userdefault7 = [NSUserDefaults standardUserDefaults];
-    //NSDateの保存
-    [userdefault7 setObject:pickerdate7 forKey:@"date7"];
-  
+
 }
 
 -(void)read1{
     NSUserDefaults *readdefault1 = [NSUserDefaults standardUserDefaults];
-   date1 = [readdefault1 objectForKey:@"date1"];
-    NSLog(@"%@" , date1);
-    
+   m_date[1] = [readdefault1 objectForKey:@"date1"];
+    NSLog(@"%@" , m_date[1]);
 
 }
 
 -(void)read2{
     NSUserDefaults *readdefault2 = [NSUserDefaults standardUserDefaults];
-   date2 = [readdefault2 objectForKey:@"date2"];
-    NSLog(@"%@" , date2);
+    m_date[2] = [readdefault2 objectForKey:@"date2"];
+    NSLog(@"%@" , m_date[2]);
 
 }
 
 -(void)read3{
     NSUserDefaults *readdefault3 = [NSUserDefaults standardUserDefaults];
-    date3 = [readdefault3 objectForKey:@"date3"];
-    NSLog(@"%@" , date3);
+    m_date[3] = [readdefault3 objectForKey:@"date3"];
+    NSLog(@"%@" , m_date[3]);
 
 }
 
 -(void)read4{
     NSUserDefaults *readdefault4 = [NSUserDefaults standardUserDefaults];
-    date4 = [readdefault4 objectForKey:@"date4"];
-    NSLog(@"%@" , date4);
+   m_date[4] = [readdefault4 objectForKey:@"date4"];
+    NSLog(@"%@" , m_date[4]);
+
 
 }
 
 -(void)read5{
     NSUserDefaults *readdefault5 = [NSUserDefaults standardUserDefaults];
-   date5 = [readdefault5 objectForKey:@"date5"];
-    NSLog(@"%@" , date5);
-
-
+   m_date[5] = [readdefault5 objectForKey:@"date5"];
+    NSLog(@"%@" , m_date[5]);
 }
 
 -(void)read6{
     NSUserDefaults *readdefault6 = [NSUserDefaults standardUserDefaults];
-   date6 = [readdefault6 objectForKey:@"date6"];
-    NSLog(@"%@" , date6);
-}
-
--(void)read7{
-    NSUserDefaults *readdefault7 = [NSUserDefaults standardUserDefaults];
-  date7 = [readdefault7 objectForKey:@"date7"];
-    NSLog(@"%@" , date7);
+  m_date[6] = [readdefault6 objectForKey:@"date6"];
+    NSLog(@"%@" , m_date[6]);
 }
 
 
 
 -(void)makenotification{
-    
-    
-    
-    
-    
     UILocalNotification *notify;
     notify = [[UILocalNotification alloc]init];
+    [notify setTimeZone:[NSTimeZone systemTimeZone]];
+    
+    [notify setFireDate:m_date[0]];
+    [notify setFireDate:m_date[1]];
+    [notify setFireDate:m_date[2]];
+    [notify setFireDate:m_date[3]];
+    [notify setFireDate:m_date[4]];
+    [notify setFireDate:m_date[5]];
+    [notify setFireDate:m_date[6]];
     notify.alertBody = @"hoge";
-    notify.fireDate = date1;
-    notify.fireDate = date2;
-    notify.fireDate = date3;
-    notify.fireDate = date4;
-    notify.fireDate = date5;
-    notify.fireDate = date6;
-    notify.fireDate = date7;
+    
+
     
     [[UIApplication sharedApplication]scheduleLocalNotification:notify];
 }
