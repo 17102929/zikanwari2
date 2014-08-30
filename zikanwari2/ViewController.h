@@ -35,6 +35,7 @@ const static int TEXTFIELD_HEIGHT = 30;
     NSMutableDictionary *m_dic[7];
     UIButton *m_pickerdone;
     NSDate *m_date[7];
+    NSTimer *m_timer;
     int numforjudge;
     int a;
     int b;
@@ -49,6 +50,9 @@ const static int TEXTFIELD_HEIGHT = 30;
        
     
 }
+
+//-(void)makenotification;
+-(void)readnotice;
 
 
 

@@ -397,12 +397,20 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
             [self read6];
             break;
             
-            
+        
         
     }
     
+    [self performSelectorInBackground: @selector(readnotice) withObject:nil];
+    
     
 }
+
+-(void)readnotice{
+    m_timer = [NSTimer scheduledTimerWithTimeInterval:20.0f target:self selector:@selector(makenotification:)userInfo:nil repeats:YES];
+    }
+
+    
 
 
 -(void)save0{
@@ -524,10 +532,12 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
 
 
 
--(void)makenotification{
+-(void)makenotification:m_timer{
     UILocalNotification *notify;
     notify = [[UILocalNotification alloc]init];
     [notify setTimeZone:[NSTimeZone systemTimeZone]];
+    notify.alertBody = @"hoge";
+    NSLog(@"ok");
     
     [notify setFireDate:m_date[0]];
     [notify setFireDate:m_date[1]];
@@ -536,11 +546,15 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     [notify setFireDate:m_date[4]];
     [notify setFireDate:m_date[5]];
     [notify setFireDate:m_date[6]];
-    notify.alertBody = @"hoge";
     
-
+    
+    
     
     [[UIApplication sharedApplication]scheduleLocalNotification:notify];
+    
+  
+    
+    
 }
 
 
