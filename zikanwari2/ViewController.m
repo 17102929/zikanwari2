@@ -320,95 +320,58 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
    // NSDate *date[HEIGHT_BLOCK_NUM-1];
     //date[HEIGHT_BLOCK_NUM] = [[NSDate alloc]init]; //ここでEXC_BAD_ACCESS
     //ボタン判定メソッドをぼーん、それに応じて入れるuserdefaultを変えてやる...？
-    /*if(numforjudge == 1){
-        [self save1];
-        [self read1];
-            }
-    
-    if(numforjudge == 2){
-        [self save2];
-        [self read2];
-           }
-    
-    if(numforjudge == 3){
-        [self save3];
-        [self read3];
-            }
-    
-    if(numforjudge == 4){
-        [self save4];
-        [self read4];
-        
-    }
-    
-    if(numforjudge == 5){
-        [self save5];
-        [self read5];
-    }
-    
-    if(numforjudge == 6){
-        [self save6];
-        [self read6];
-    }
-    
-    if(numforjudge == 7){
-        [self save7];
-        [self read7];
-    }
-    
-         */
-    
-    
     
     
     switch (numforjudge) {
         case 1:
             [self save0];
-            [self read0];
+           // [self read0];
             break;
             
         case 2:
             [self save1];
-            [self read1];
+           // [self read1];
             break;
             
         case 3:
             [self save2];
-            [self read2];
+           // [self read2];
             break;
             
         case 4:
             [self save3];
-            [self read3];
+           //[self read3];
             break;
             
         case 5:
             [self save4];
-            [self read4];
+           // [self read4];
             break;
             
         case 6:
             [self save5];
-            [self read5];
+           // [self read5];
             break;
             
         case 7:
             [self save6];
-            [self read6];
+           // [self read6];
             break;
             
         
         
     }
     
-    [self performSelectorInBackground: @selector(readnotice) withObject:nil];
+    //[self performSelectorInBackground: @selector(readnotice) withObject:nil];
     
     
 }
 
--(void)readnotice{
-    m_timer = [NSTimer scheduledTimerWithTimeInterval:20.0f target:self selector:@selector(makenotification:)userInfo:nil repeats:YES];
-    }
+/*-(void)readnotice{
+
+    m_timer = [NSTimer scheduledTimerWithTimeInterval:20.0f target:self selector:@selector(makenotification)userInfo:nil repeats:YES];
+    [m_timer fire];
+       }*/
 
     
 
@@ -481,64 +444,45 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
   
 }
 
--(void)read0{
-    NSUserDefaults *readdefault0 = [NSUserDefaults standardUserDefaults];
-   m_date[0] = [readdefault0 objectForKey:@"date0"];
-    NSLog(@"%@" , m_date[0]);
+/*-(void)read0{
+    
     
 
 }
 
 -(void)read1{
-    NSUserDefaults *readdefault1 = [NSUserDefaults standardUserDefaults];
-   m_date[1] = [readdefault1 objectForKey:@"date1"];
-    NSLog(@"%@" , m_date[1]);
+    
 
 }
 
 -(void)read2{
-    NSUserDefaults *readdefault2 = [NSUserDefaults standardUserDefaults];
-    m_date[2] = [readdefault2 objectForKey:@"date2"];
-    NSLog(@"%@" , m_date[2]);
-
 }
 
 -(void)read3{
-    NSUserDefaults *readdefault3 = [NSUserDefaults standardUserDefaults];
-    m_date[3] = [readdefault3 objectForKey:@"date3"];
-    NSLog(@"%@" , m_date[3]);
+   
 
 }
 
 -(void)read4{
-    NSUserDefaults *readdefault4 = [NSUserDefaults standardUserDefaults];
-   m_date[4] = [readdefault4 objectForKey:@"date4"];
-    NSLog(@"%@" , m_date[4]);
-
-
+    
 }
 
 -(void)read5{
-    NSUserDefaults *readdefault5 = [NSUserDefaults standardUserDefaults];
-   m_date[5] = [readdefault5 objectForKey:@"date5"];
-    NSLog(@"%@" , m_date[5]);
+    
 }
 
 -(void)read6{
-    NSUserDefaults *readdefault6 = [NSUserDefaults standardUserDefaults];
-  m_date[6] = [readdefault6 objectForKey:@"date6"];
-    NSLog(@"%@" , m_date[6]);
-}
+   }*/
 
 
 
--(void)makenotification:m_timer{
-    UILocalNotification *notify;
+-(void)makenotification{
+    /*UILocalNotification *notify;
     notify = [[UILocalNotification alloc]init];
     [notify setTimeZone:[NSTimeZone systemTimeZone]];
     notify.alertBody = @"hoge";
-    NSLog(@"ok");
     
+
     [notify setFireDate:m_date[0]];
     [notify setFireDate:m_date[1]];
     [notify setFireDate:m_date[2]];
@@ -550,10 +494,10 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     
     
     
-    [[UIApplication sharedApplication]scheduleLocalNotification:notify];
+    [[UIApplication sharedApplication]scheduleLocalNotification:notify];*/
     
   
-    
+
     
 }
 

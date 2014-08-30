@@ -31,6 +31,53 @@
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
     
+    NSUserDefaults *readdefault0 = [NSUserDefaults standardUserDefaults];
+    date[0] = [readdefault0 objectForKey:@"date0"];
+    NSLog(@"%@" , date[0]);
+    
+    NSUserDefaults *readdefault1 = [NSUserDefaults standardUserDefaults];
+    date[1] = [readdefault1 objectForKey:@"date1"];
+    NSLog(@"%@" , date[1]);
+    
+    
+    NSUserDefaults *readdefault2 = [NSUserDefaults standardUserDefaults];
+    date[2] = [readdefault2 objectForKey:@"date2"];
+    NSLog(@"%@" , date[2]);
+        
+    NSUserDefaults *readdefault3 = [NSUserDefaults standardUserDefaults];
+    date[3] = [readdefault3 objectForKey:@"date3"];
+    NSLog(@"%@" , date[3]);
+    
+    NSUserDefaults *readdefault4 = [NSUserDefaults standardUserDefaults];
+    date[4] = [readdefault4 objectForKey:@"date4"];
+    NSLog(@"%@" , date[4]);
+    
+    NSUserDefaults *readdefault5 = [NSUserDefaults standardUserDefaults];
+    date[5] = [readdefault5 objectForKey:@"date5"];
+    NSLog(@"%@" , date[5]);
+    
+    NSUserDefaults *readdefault6 = [NSUserDefaults standardUserDefaults];
+    date[6] = [readdefault6 objectForKey:@"date6"];
+    NSLog(@"%@" , date[6]);
+    
+    UILocalNotification *notify;
+     notify = [[UILocalNotification alloc]init];
+     [notify setTimeZone:[NSTimeZone systemTimeZone]];
+     notify.alertBody = @"hoge";
+     
+     
+     [notify setFireDate:date[0]];
+     [notify setFireDate:date[1]];
+     [notify setFireDate:date[2]];
+     [notify setFireDate:date[3]];
+     [notify setFireDate:date[4]];
+     [notify setFireDate:date[5]];
+     [notify setFireDate:date[6]];
+     
+     
+     
+     
+     [[UIApplication sharedApplication]scheduleLocalNotification:notify];
     
     
 }

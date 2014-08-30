@@ -37,13 +37,7 @@ const static int TEXTFIELD_HEIGHT = 30;
     NSDate *m_date[7];
     NSTimer *m_timer;
     int numforjudge;
-    int a;
-    int b;
-    int c;
-    int d;
-    int f;
-    int g;
-    int h;
+    
    
 
     //NSDate *m_date;
@@ -52,7 +46,7 @@ const static int TEXTFIELD_HEIGHT = 30;
 }
 
 //-(void)makenotification;
--(void)readnotice;
+//-(void)readnotice;
 
 
 
