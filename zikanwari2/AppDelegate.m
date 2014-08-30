@@ -16,9 +16,117 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    [application setMinimumBackgroundFetchInterval:60.0f];
+    
     return YES;
 }
-							
+
+-(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler{
+    
+     NSUserDefaults *readdefault0 = [NSUserDefaults standardUserDefaults];
+     m_date[0] = [readdefault0 objectForKey:@"date0"];
+    // NSLog(@"%@" , m_date[0]);
+     
+     NSUserDefaults *readdefault1 = [NSUserDefaults standardUserDefaults];
+     m_date[1] = [readdefault1 objectForKey:@"date1"];
+     //NSLog(@"%@" , m_date[1]);
+     
+     
+     NSUserDefaults *readdefault2 = [NSUserDefaults standardUserDefaults];
+     m_date[2] = [readdefault2 objectForKey:@"date2"];
+     //NSLog(@"%@" , m_date[2]);
+     
+     NSUserDefaults *readdefault3 = [NSUserDefaults standardUserDefaults];
+     m_date[3] = [readdefault3 objectForKey:@"date3"];
+     //NSLog(@"%@" , m_date[3]);
+     
+     NSUserDefaults *readdefault4 = [NSUserDefaults standardUserDefaults];
+     m_date[4] = [readdefault4 objectForKey:@"date4"];
+     //NSLog(@"%@" , m_date[4]);
+     
+     NSUserDefaults *readdefault5 = [NSUserDefaults standardUserDefaults];
+     m_date[5] = [readdefault5 objectForKey:@"date5"];
+     //NSLog(@"%@" , m_date[5]);
+     
+     NSUserDefaults *readdefault6 = [NSUserDefaults standardUserDefaults];
+     m_date[6] = [readdefault6 objectForKey:@"date6"];
+    
+     
+     UILocalNotification *notify;
+     notify = [[UILocalNotification alloc]init];
+     [notify setTimeZone:[NSTimeZone systemTimeZone]];
+     notify.alertBody = @"hoge";
+    
+        [notify setFireDate:m_date[0]];
+        [notify setFireDate:m_date[1]];
+        [notify setFireDate:m_date[2]];
+        [notify setFireDate:m_date[3]];
+        [notify setFireDate:m_date[4]];
+        [notify setFireDate:m_date[5]];
+        [notify setFireDate:m_date[6]];
+        
+        
+        
+        //NSLog(@"%@" , m_date[0]);
+        
+    NSError *error;
+    if(error){
+        completionHandler(UIBackgroundFetchResultFailed);
+    }
+    else{
+        completionHandler(UIBackgroundFetchResultNewData);
+    }
+    
+    
+    
+    }
+
+
+
+     
+     //NSLog(@"%@" , m_date[6]);
+     
+     
+    // for(int i = 0; i<10; i++){
+     //i--;
+    
+     //NSLog(@"%@" , date);
+     
+     /*if(date == m_date[0]){
+     [notify fireDate];
+     
+     }
+     
+     if(date == m_date[1]){
+     [notify fireDate];
+     }
+     
+     if(date == m_date[2]){
+     [notify fireDate];
+     }
+     
+     if(date == m_date[3]){
+     [notify fireDate];
+     }
+     
+     if(date == m_date[4]){
+     [notify fireDate];
+     }
+     
+     if(date == m_date[5]){
+     [notify fireDate];
+     }
+     
+     if(date == m_date[6]){
+     [notify fireDate];
+     }*/
+     
+    
+
+    
+
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -27,60 +135,115 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalim_date timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
     
-    NSUserDefaults *readdefault0 = [NSUserDefaults standardUserDefaults];
-    date[0] = [readdefault0 objectForKey:@"date0"];
-    NSLog(@"%@" , date[0]);
+    
+    
+   /* NSUserDefaults *readdefault0 = [NSUserDefaults standardUserDefaults];
+    m_date[0] = [readdefault0 objectForKey:@"date0"];
+    NSLog(@"%@" , m_date[0]);
     
     NSUserDefaults *readdefault1 = [NSUserDefaults standardUserDefaults];
-    date[1] = [readdefault1 objectForKey:@"date1"];
-    NSLog(@"%@" , date[1]);
+    m_date[1] = [readdefault1 objectForKey:@"date1"];
+    //NSLog(@"%@" , m_date[1]);
     
     
     NSUserDefaults *readdefault2 = [NSUserDefaults standardUserDefaults];
-    date[2] = [readdefault2 objectForKey:@"date2"];
-    NSLog(@"%@" , date[2]);
+    m_date[2] = [readdefault2 objectForKey:@"date2"];
+    //NSLog(@"%@" , m_date[2]);
         
     NSUserDefaults *readdefault3 = [NSUserDefaults standardUserDefaults];
-    date[3] = [readdefault3 objectForKey:@"date3"];
-    NSLog(@"%@" , date[3]);
+    m_date[3] = [readdefault3 objectForKey:@"date3"];
+    //NSLog(@"%@" , m_date[3]);
     
     NSUserDefaults *readdefault4 = [NSUserDefaults standardUserDefaults];
-    date[4] = [readdefault4 objectForKey:@"date4"];
-    NSLog(@"%@" , date[4]);
+    m_date[4] = [readdefault4 objectForKey:@"date4"];
+    //NSLog(@"%@" , m_date[4]);
     
     NSUserDefaults *readdefault5 = [NSUserDefaults standardUserDefaults];
-    date[5] = [readdefault5 objectForKey:@"date5"];
-    NSLog(@"%@" , date[5]);
+    m_date[5] = [readdefault5 objectForKey:@"date5"];
+    //NSLog(@"%@" , m_date[5]);
     
     NSUserDefaults *readdefault6 = [NSUserDefaults standardUserDefaults];
-    date[6] = [readdefault6 objectForKey:@"date6"];
-    NSLog(@"%@" , date[6]);
+    m_date[6] = [readdefault6 objectForKey:@"date6"];
     
     UILocalNotification *notify;
-     notify = [[UILocalNotification alloc]init];
-     [notify setTimeZone:[NSTimeZone systemTimeZone]];
-     notify.alertBody = @"hoge";
-     
-     
-     [notify setFireDate:date[0]];
-     [notify setFireDate:date[1]];
-     [notify setFireDate:date[2]];
-     [notify setFireDate:date[3]];
-     [notify setFireDate:date[4]];
-     [notify setFireDate:date[5]];
-     [notify setFireDate:date[6]];
-     
-     
-     
-     
-     [[UIApplication sharedApplication]scheduleLocalNotification:notify];
+    notify = [[UILocalNotification alloc]init];
+    [notify setTimeZone:[NSTimeZone systemTimeZone]];
+    notify.alertBody = @"hoge";
+
+    //NSLog(@"%@" , m_date[6]);
     
     
-}
+    for(int i = 0; i<10; i++){
+        i--;
+        NSDate *date;
+        date = [NSDate date];
+        //NSLog(@"%@" , date);
+        
+        if(date == m_date[0]){
+            [notify fireDate];
+            
+        }
+        
+        if(date == m_date[1]){
+            [notify fireDate];
+        }
+        
+        if(date == m_date[2]){
+            [notify fireDate];
+        }
+        
+        if(date == m_date[3]){
+            [notify fireDate];
+        }
+        
+        if(date == m_date[4]){
+            [notify fireDate];
+        }
+        
+        if(date == m_date[5]){
+            [notify fireDate];
+        }
+        
+        if(date == m_date[6]){
+            [notify fireDate];
+        }
+        
+        for(int i = 0; i<10; i++){
+            i--;
+            NSDate *date;
+            date = [NSDate date];
+            [notify setFireDate:date];
+            
+             [notify setFireDate:m_date[0]];
+             [notify setFireDate:m_date[1]];
+             [notify setFireDate:m_date[2]];
+             [notify setFireDate:m_date[3]];
+             [notify setFireDate:m_date[4]];
+             [notify setFireDate:m_date[5]];
+             [notify setFireDate:m_date[6]];
+            
+            
+            
+            NSLog(@"%@" , m_date[0]);
+            
+        }
+        
+    [[UIApplication sharedApplication]scheduleLocalNotification:notify];*/
+
+
+    
+    }
+    
+     
+     
+     
+     
+
+
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {

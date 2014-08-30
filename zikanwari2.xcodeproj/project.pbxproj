@@ -203,6 +203,13 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Sora Mizuno";
 				TargetAttributes = {
+					978B36FA19A2EFB500F46AD4 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					978B371B19A2EFB500F46AD4 = {
 						TestTargetID = 978B36FA19A2EFB500F46AD4;
 					};

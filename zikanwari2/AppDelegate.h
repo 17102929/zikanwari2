@@ -13,7 +13,7 @@
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>{
-    NSDate *date[7];
+    NSDate *m_date[7];
    
    
 }
