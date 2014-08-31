@@ -315,6 +315,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     m_subject.hidden = NO;
     m_roomNumber.hidden = NO;
     m_teacher.hidden = NO;
+      
     
     
    // NSDate *date[HEIGHT_BLOCK_NUM-1];
@@ -378,6 +379,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
 
 -(void)save0{
     NSDate *pickerdate0 = m_datepicker.date;
+
     
     NSUserDefaults *userdefault0 = [NSUserDefaults standardUserDefaults];
     //NSDateの保存
