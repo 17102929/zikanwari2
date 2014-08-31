@@ -220,13 +220,18 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
 {
     
     
-    CGPoint m_scrollPoint = CGPointMake(0.0,218.0);
+    CGPoint m_scrollPoint = CGPointMake(0.0,250.0);
     [m_scr setContentOffset:m_scrollPoint animated:YES];
+    m_datepicker.hidden = YES;
+    m_pickerdone.hidden = YES;
 }
 
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
     [m_scr setContentOffset:CGPointZero animated:YES];
+    
+    
+    
     
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -274,6 +279,14 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     btn.titleLabel.font = [UIFont systemFontOfSize:12];
     btn.titleEdgeInsets = UIEdgeInsetsMake(HEIGHT_BLOCK_NUM, WIDTH_BLOCK_NUM  -5 , 0,0);
     
+    [self readcontents];
+    
+    
+    
+   
+    
+   
+    
 }
 
 
@@ -290,7 +303,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     
     for(int i=1; i<HEIGHT_BLOCK_NUM;i++){
         if(button == m_button[0][i]){
-            NSLog(@"%d" , i);
+           // NSLog(@"%d" , i);
             numforjudge = i;
         
             
@@ -379,11 +392,10 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
 
 -(void)save0{
     NSDate *pickerdate0 = m_datepicker.date;
-
-    
     NSUserDefaults *userdefault0 = [NSUserDefaults standardUserDefaults];
     //NSDateの保存
     [userdefault0 setObject:pickerdate0 forKey:@"date0"];
+    
     
     
 
@@ -501,6 +513,21 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
   
 
     
+}
+
+-(void)readcontents{
+    forcontents[0] = [NSUserDefaults standardUserDefaults];
+    //NSString *strmon1;
+    [forcontents[0] setObject:m_button[1][1].titleLabel forKey:@"mon1"];
+    [forcontents[0] synchronize];
+    
+    //保存できてるかの確認で、今だけ（取得します）
+    NSUserDefaults *readcontents = [NSUserDefaults standardUserDefaults];
+    [readcontents objectForKey:@"mon1"];
+    NSString *strmon1 = [readcontents objectForKey:@"mon1"];
+    NSLog(@"%@" , strmon1);
+    
+
 }
 
 

@@ -29,7 +29,7 @@
         completionHandler(UIBackgroundFetchResultFailed);
     }
     else{
-        completionHandler(UIBackgroundFetchResultNewData);
+        completionHandler(UIBackgroundFetchResultNoData);
     }
     
     
@@ -77,14 +77,15 @@
     
     NSDate *date = [NSDate date];
     NSLog(@"%@" , date);
+    
+    notify.fireDate = m_date[0];
 
     
    // NSLog(@"%@" , date);
 
-    if(date == m_date[0]){
+    /*if(date == m_date[0]){
      notify.alertBody = @"hoge0";
-     [notify fireDate];
-        
+        [notify fireDate];
         
      }
    
@@ -122,7 +123,7 @@
     
     
     
-        /*[notify setFireDate:m_date[0]];
+        [notify setFireDate:m_date[0]];
         [notify setFireDate:m_date[1]];
         [notify setFireDate:m_date[2]];
         [notify setFireDate:m_date[3]];
