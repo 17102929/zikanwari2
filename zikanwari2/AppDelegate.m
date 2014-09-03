@@ -20,142 +20,57 @@
     return YES;
 }
 
-/*-(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+-(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
     
     NSError *error;
     if(error){
         completionHandler(UIBackgroundFetchResultFailed);
     }
     else{
-        completionHandler(UIBackgroundFetchResultNoData);
+        completionHandler(UIBackgroundFetchResultNewData);
     }
     
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSUInteger flags;
+    NSDateComponents *comps;
+    flags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
     
-
+    NSInteger hour[7];
+    NSInteger minute[7];
     
-     NSUserDefaults *readdefault0 = [NSUserDefaults standardUserDefaults];
-     m_date[0] = [readdefault0 objectForKey:@"date0"];
-    NSLog(@"%@" , m_date[0]);
-     
-     NSUserDefaults *readdefault1 = [NSUserDefaults standardUserDefaults];
-     m_date[1] = [readdefault1 objectForKey:@"date1"];
-    //NSLog(@"%@" , m_date[1]);
-     
-     
-     NSUserDefaults *readdefault2 = [NSUserDefaults standardUserDefaults];
-     m_date[2] = [readdefault2 objectForKey:@"date2"];
-    // NSLog(@"%@" , m_date[2]);
-     
-     NSUserDefaults *readdefault3 = [NSUserDefaults standardUserDefaults];
-     m_date[3] = [readdefault3 objectForKey:@"date3"];
-    // NSLog(@"%@" , m_date[3]);
-     
-     NSUserDefaults *readdefault4 = [NSUserDefaults standardUserDefaults];
-     m_date[4] = [readdefault4 objectForKey:@"date4"];
-     //NSLog(@"%@" , m_date[4]);
-     
-     NSUserDefaults *readdefault5 = [NSUserDefaults standardUserDefaults];
-     m_date[5] = [readdefault5 objectForKey:@"date5"];
-     //NSLog(@"%@" , m_date[5]);
-     
-     NSUserDefaults *readdefault6 = [NSUserDefaults standardUserDefaults];
-     m_date[6] = [readdefault6 objectForKey:@"date6"];
-    //NSLog(@"%@" , m_date[6]);
+    NSUserDefaults *readdefault = [NSUserDefaults standardUserDefaults];
     
-     
-     UILocalNotification *notify = [[UILocalNotification alloc]init];
+    for (int k=0; k<7; k++) {
+        m_date[k] = [readdefault objectForKey:[NSString stringWithFormat:@"date%d", k]];
+        comps = [calendar components:flags fromDate:m_date[k]];
+        hour[k] = comps.hour;
+        minute[k] = comps.minute;
+        NSLog(@"SaveTime[%d] %d:%d", k, (int)hour[k], (int)minute[k]);
+    }
     
-    notify.timeZone = [NSTimeZone defaultTimeZone];
+    /* 現在時刻の取得 */
+    NSDate *now = [NSDate date];
+    NSInteger nowHour, nowMinute;
+    comps = [calendar components:flags fromDate:now];
+    nowHour = comps.hour;
+    nowMinute = comps.minute;
     
-    // notify.alertBody = @"hoge";
+    NSLog(@"Now %d:%d", (int)nowHour, (int)nowMinute);
     
-
+    UILocalNotification *notify;
+    notify = [[UILocalNotification alloc]init];
+    [notify setTimeZone:[NSTimeZone localTimeZone]];
     
-   
-    
-    
-    NSDate *date = [NSDate date];
-    NSLog(@"%@" , date);
-    
-    notify.fireDate = m_date[0];
+    for (int k=0; k<7; k++) {
+        if (hour[k] == nowHour && minute[k] == nowMinute) {
+            notify.alertBody = [NSString stringWithFormat:@"Hoge %d", k];
+            [notify fireDate];
+        }
+    }
     
     [[UIApplication sharedApplication]scheduleLocalNotification:notify];
-
-
     
-   // NSLog(@"%@" , date);
-
-    if(date == m_date[0]){
-     notify.alertBody = @"hoge0";
-        [notify fireDate];
-        
-     }
-   
-     
-     if(date == m_date[1]){
-     [notify fireDate];
-         notify.alertBody = @"hoge1";
-     }
-     
-     if(date == m_date[2]){
-     [notify fireDate];
-         notify.alertBody = @"hoge2";
-     }
-     
-     if(date == m_date[3]){
-     [notify fireDate];
-         notify.alertBody = @"hoge3";
-     }
-     
-     if(date == m_date[4]){
-     [notify fireDate];
-         notify.alertBody = @"hoge4";
-     }
-     
-     if(date == m_date[5]){
-     [notify fireDate];
-         notify.alertBody = @"hoge5";
-     }
-     
-     if(date == m_date[6]){
-     [notify fireDate];
-         notify.alertBody = @"hoge6";
-     }
-
-    
-    
-    
-        [notify setFireDate:m_date[0]];
-        [notify setFireDate:m_date[1]];
-        [notify setFireDate:m_date[2]];
-        [notify setFireDate:m_date[3]];
-        [notify setFireDate:m_date[4]];
-        [notify setFireDate:m_date[5]];
-        [notify setFireDate:m_date[6]];
-        NSLog(@"%@" , m_date[0]);*/
-    
-    
-    
-    
-    //}
-
-
-
-     
-     //NSLog(@"%@" , m_date[6]);
-     
-     
-    // for(int i = 0; i<10; i++){
-     //i--;
-    
-     //NSLog(@"%@" , date);
-     
-
-    
-
-    
-
-
+}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
