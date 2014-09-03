@@ -18,6 +18,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
 
 @implementation ViewController
 
+
 - (void)viewDidLoad
 {
     
@@ -184,6 +185,10 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     tosegment.backgroundColor = [UIColor colorWithRed:1.0f green:0.66f blue:1.0f alpha:1.0];*/
     
     
+   
+    
+    
+    
     
 }
 
@@ -279,7 +284,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     btn.titleLabel.font = [UIFont systemFontOfSize:12];
     btn.titleEdgeInsets = UIEdgeInsetsMake(HEIGHT_BLOCK_NUM, WIDTH_BLOCK_NUM  -5 , 0,0);
     
-    [self readcontents];
+    //[self readcontents];
     
     
     
@@ -305,7 +310,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
         if(button == m_button[0][i]){
            // NSLog(@"%d" , i);
             numforjudge = i;
-        
+            
             
             /*if (i == 1){
              [self save1];
@@ -316,14 +321,33 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
         
         
     }
+    
+    
 
-    
-    
 }
 
 -(void)datePickerFinished:(UIButton*)button{
     
-    [m_scr setContentOffset:CGPointZero animated:YES];
+    
+    
+   /* NSString *dateFormat = @"HHmms";
+    
+    NSTimeZone *inputTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+    NSDateFormatter *inputDateFormatter = [[NSDateFormatter alloc] init];
+    [inputDateFormatter setTimeZone:inputTimeZone];
+    [inputDateFormatter setDateFormat:dateFormat];
+    
+    NSString *inputString = [NSString stringWithFormat:@"%@" , m_date[0]];
+    NSDate *date = [inputDateFormatter dateFromString:inputString];
+    
+    
+    NSTimeZone *outputTimeZone = [NSTimeZone localTimeZone];
+    NSDateFormatter *outputDateFormatter = [[NSDateFormatter alloc] init];
+    [outputDateFormatter setTimeZone:outputTimeZone];
+    [outputDateFormatter setDateFormat:dateFormat];
+    NSString *outputString = [outputDateFormatter stringFromDate:date];
+    NSLog(@"%@" , outputString);*/
+   
     
     m_subject.hidden = NO;
     m_roomNumber.hidden = NO;
@@ -338,48 +362,107 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     
     switch (numforjudge) {
         case 1:
-            [self save0];
-           // [self read0];
+            [self save0];{
+                NSUserDefaults *readdefault0 = [NSUserDefaults standardUserDefaults];
+                m_date[0] = [readdefault0 objectForKey:@"date0"];
+                
+                newdate[0] = [m_date[0] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT] sinceDate:m_date[0]];
+                NSLog(@"%@" , newdate[0]);
+
+                
+                //NSLog(@"%@" , local_date[0]);
+
+
+
+            }
+            
             break;
             
         case 2:
             [self save1];
-           // [self read1];
+        {NSUserDefaults *readdefault1 = [NSUserDefaults standardUserDefaults];
+            m_date[1] = [readdefault1 objectForKey:@"date1"];}
+            
+            newdate[1] = [m_date[1] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT] sinceDate:m_date[1]];
+            
+            NSLog(@"%@" , newdate[1]);
+
+          
+
+           
             break;
             
         case 3:
             [self save2];
-           // [self read2];
+        {NSUserDefaults *readdefault2 = [NSUserDefaults standardUserDefaults];
+            m_date[2] = [readdefault2 objectForKey:@"date2"];}
+                         newdate[2] = [m_date[2] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT] sinceDate:m_date[2]];
+            NSLog(@"%@" , newdate[2]);
             break;
             
+            
+            
         case 4:
-            [self save3];
-           //[self read3];
+            [self save3];{
+                NSUserDefaults *readdefault3 = [NSUserDefaults standardUserDefaults];
+                m_date[3] = [readdefault3 objectForKey:@"date3"];
+                newdate[3] = [m_date[3] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT] sinceDate:m_date[3]];
+                NSLog(@"%@" , newdate[3]);
+                
+               
+
+            }
+          
             break;
             
         case 5:
-            [self save4];
-           // [self read4];
+            [self save4];{
+                
+                NSUserDefaults *readdefault4 = [NSUserDefaults standardUserDefaults];
+                m_date[4] = [readdefault4 objectForKey:@"date4"];
+                newdate[4] = [m_date[4] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT] sinceDate:m_date[4]];
+                NSLog(@"%@" , newdate[4]);
+             
+
+            }
+           
             break;
             
         case 6:
-            [self save5];
-           // [self read5];
-            break;
+            [self save5];{
+                NSUserDefaults *readdefault5 = [NSUserDefaults standardUserDefaults];
+                m_date[5] = [readdefault5 objectForKey:@"date5"];
+                newdate[5] = [m_date[5] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT] sinceDate:m_date[5]];
+                NSLog(@"%@" , newdate[5]);
+               // NSLog(@"%@" , local_date[5]);
+
+
+
+            }
+                  break;
             
         case 7:
             [self save6];
-           // [self read6];
-            break;
+            NSUserDefaults *readdefault6 = [NSUserDefaults standardUserDefaults];
+            m_date[6] = [readdefault6 objectForKey:@"date6"];
+             newdate[6] = [m_date[6] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT] sinceDate:m_date[6]];
+            NSLog(@"%@" , newdate[6]);
+
             
+
+          
+            break;
         
         
     }
+        [m_scr setContentOffset:CGPointZero animated:YES];
     
-    //[self performSelectorInBackground: @selector(readnotice) withObject:nil];
+   
+
     
     
-}
+        [self makenotification];
+  }
 
 /*-(void)readnotice{
 
@@ -392,6 +475,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
 
 -(void)save0{
     NSDate *pickerdate0 = m_datepicker.date;
+    
     NSUserDefaults *userdefault0 = [NSUserDefaults standardUserDefaults];
     //NSDateの保存
     [userdefault0 setObject:pickerdate0 forKey:@"date0"];
@@ -417,6 +501,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     NSUserDefaults *userdefault2 = [NSUserDefaults standardUserDefaults];
     //NSDateの保存
     [userdefault2 setObject:pickerdate2 forKey:@"date2"];
+   
     
 
 }
@@ -427,7 +512,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     NSUserDefaults *userdefault3 = [NSUserDefaults standardUserDefaults];
     //NSDateの保存
     [userdefault3 setObject:pickerdate3 forKey:@"date3"];
-   
+    
 }
 
 -(void)save4{
@@ -436,8 +521,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     NSUserDefaults *userdefault4 = [NSUserDefaults standardUserDefaults];
     //NSDateの保存
     [userdefault4 setObject:pickerdate4 forKey:@"date4"];
-    
-}
+    }
 
 -(void)save5{
     NSDate *pickerdate5 = m_datepicker.date;
@@ -445,6 +529,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     NSUserDefaults *userdefault5 = [NSUserDefaults standardUserDefaults];
     //NSDateの保存
     [userdefault5 setObject:pickerdate5 forKey:@"date5"];
+   
     
 
 }
@@ -455,6 +540,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     NSUserDefaults *userdefault6 = [NSUserDefaults standardUserDefaults];
     //NSDateの保存
     [userdefault6 setObject:pickerdate6 forKey:@"date6"];
+   
   
 }
 
@@ -490,30 +576,54 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
 
 
 
+/*-(void)makenotification{
+    
+    
+    
+}*/
+
+
+
+
 -(void)makenotification{
-    /*UILocalNotification *notify;
-    notify = [[UILocalNotification alloc]init];
-    [notify setTimeZone:[NSTimeZone systemTimeZone]];
-    notify.alertBody = @"hoge";
+    
+    
+     UILocalNotification *notify = [[UILocalNotification alloc]init];
+    
+    
+     notify.timeZone = [NSTimeZone localTimeZone];
+    
+     notify.alertBody = @"hoge";
+    
+    
+    
+    notify.fireDate = newdate[0];
+     notify.fireDate = newdate[1];
+     notify.fireDate = newdate[2];
+     notify.fireDate = newdate[3];
+     notify.fireDate = newdate[4];
+     notify.fireDate = newdate[5];
+     notify.fireDate = newdate[6];
+    
+    
+     
+    
+    
+    
+    //[notify setFireDate:m_date[0]];
+    //登録されていた時間は8:21分...だから通知が早くきた
+    //If the specified value is nil or is a date in the past, the notification is delivered immediately.
+    //つまりGSTの問題である可能性が高い。
+    
+    
+    
+    
+    //終わった時間だから通知が早く来てた。
     
 
-    [notify setFireDate:m_date[0]];
-    [notify setFireDate:m_date[1]];
-    [notify setFireDate:m_date[2]];
-    [notify setFireDate:m_date[3]];
-    [notify setFireDate:m_date[4]];
-    [notify setFireDate:m_date[5]];
-    [notify setFireDate:m_date[6]];
+    [[UIApplication sharedApplication] scheduleLocalNotification:notify];
     
-    
-    
-    
-    [[UIApplication sharedApplication]scheduleLocalNotification:notify];*/
-    
-  
-
-    
-}
+      }
 
 -(void)readcontents{
     forcontents[0] = [NSUserDefaults standardUserDefaults];
@@ -527,8 +637,12 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     NSString *strmon1 = [readcontents objectForKey:@"mon1"];
     NSLog(@"%@" , strmon1);
     
-
+    
 }
+
+
+
+
 
 
 

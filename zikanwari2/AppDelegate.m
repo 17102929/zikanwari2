@@ -17,12 +17,10 @@
 {
     // Override point for customization after application launch.
     
-    [application setMinimumBackgroundFetchInterval:6.0f];
-    
     return YES;
 }
 
--(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+/*-(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
     
     NSError *error;
     if(error){
@@ -65,9 +63,10 @@
     //NSLog(@"%@" , m_date[6]);
     
      
-     UILocalNotification *notify;
-     notify = [[UILocalNotification alloc]init];
-    [notify setTimeZone:[NSTimeZone localTimeZone]];
+     UILocalNotification *notify = [[UILocalNotification alloc]init];
+    
+    notify.timeZone = [NSTimeZone defaultTimeZone];
+    
     // notify.alertBody = @"hoge";
     
 
@@ -79,11 +78,14 @@
     NSLog(@"%@" , date);
     
     notify.fireDate = m_date[0];
+    
+    [[UIApplication sharedApplication]scheduleLocalNotification:notify];
+
 
     
    // NSLog(@"%@" , date);
 
-    /*if(date == m_date[0]){
+    if(date == m_date[0]){
      notify.alertBody = @"hoge0";
         [notify fireDate];
         
@@ -133,10 +135,9 @@
         NSLog(@"%@" , m_date[0]);*/
     
     
-    [[UIApplication sharedApplication]scheduleLocalNotification:notify];
-        
     
-    }
+    
+    //}
 
 
 
@@ -166,104 +167,12 @@
     // Use this method to release shared resources, save user data, invalim_date timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
-    
-    
-    
-   /* NSUserDefaults *readdefault0 = [NSUserDefaults standardUserDefaults];
-    m_date[0] = [readdefault0 objectForKey:@"date0"];
-    NSLog(@"%@" , m_date[0]);
-    
-    NSUserDefaults *readdefault1 = [NSUserDefaults standardUserDefaults];
-    m_date[1] = [readdefault1 objectForKey:@"date1"];
-    //NSLog(@"%@" , m_date[1]);
-    
-    
-    NSUserDefaults *readdefault2 = [NSUserDefaults standardUserDefaults];
-    m_date[2] = [readdefault2 objectForKey:@"date2"];
-    //NSLog(@"%@" , m_date[2]);
-        
-    NSUserDefaults *readdefault3 = [NSUserDefaults standardUserDefaults];
-    m_date[3] = [readdefault3 objectForKey:@"date3"];
-    //NSLog(@"%@" , m_date[3]);
-    
-    NSUserDefaults *readdefault4 = [NSUserDefaults standardUserDefaults];
-    m_date[4] = [readdefault4 objectForKey:@"date4"];
-    //NSLog(@"%@" , m_date[4]);
-    
-    NSUserDefaults *readdefault5 = [NSUserDefaults standardUserDefaults];
-    m_date[5] = [readdefault5 objectForKey:@"date5"];
-    //NSLog(@"%@" , m_date[5]);
-    
-    NSUserDefaults *readdefault6 = [NSUserDefaults standardUserDefaults];
-    m_date[6] = [readdefault6 objectForKey:@"date6"];
-    
-    UILocalNotification *notify;
-    notify = [[UILocalNotification alloc]init];
-    [notify setTimeZone:[NSTimeZone systemTimeZone]];
-    notify.alertBody = @"hoge";
-
-    //NSLog(@"%@" , m_date[6]);
-    
-    
-    for(int i = 0; i<10; i++){
-        i--;
-        NSDate *date;
-        date = [NSDate date];
-        //NSLog(@"%@" , date);
-        
-        if(date == m_date[0]){
-            [notify fireDate];
-            
-        }
-        
-        if(date == m_date[1]){
-            [notify fireDate];
-        }
-        
-        if(date == m_date[2]){
-            [notify fireDate];
-        }
-        
-        if(date == m_date[3]){
-            [notify fireDate];
-        }
-        
-        if(date == m_date[4]){
-            [notify fireDate];
-        }
-        
-        if(date == m_date[5]){
-            [notify fireDate];
-        }
-        
-        if(date == m_date[6]){
-            [notify fireDate];
-        }
-        
-        for(int i = 0; i<10; i++){
-            i--;
-            NSDate *date;
-            date = [NSDate date];
-            [notify setFireDate:date];
-            
-             [notify setFireDate:m_date[0]];
-             [notify setFireDate:m_date[1]];
-             [notify setFireDate:m_date[2]];
-             [notify setFireDate:m_date[3]];
-             [notify setFireDate:m_date[4]];
-             [notify setFireDate:m_date[5]];
-             [notify setFireDate:m_date[6]];
-            
-            
-            
-            NSLog(@"%@" , m_date[0]);
-            
-        }
-        
-    */
-
+       
 
     
+    
+    
+       
     }
     
      

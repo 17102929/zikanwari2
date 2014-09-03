@@ -13,12 +13,26 @@
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>{
-    NSDate *m_date[7];
-   
+       
    
 }
 
 @property (strong, nonatomic) UIWindow *window;
+
+/*問題
+通知が来ない
+
+
+//解決方法:
+ .firedateからsetfiredateに
+ 
+
+//具体的に
+ 〃
+
+//結果:
+
+/参考*/
 
 
 
