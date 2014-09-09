@@ -42,6 +42,7 @@ const static int TEXTFIELD_HEIGHT = 30;
     int numforjudge;
     NSDate *m_date[7];
     NSDate *local_date[7];
+    ViewController *VC;
 
     
    
@@ -50,7 +51,6 @@ const static int TEXTFIELD_HEIGHT = 30;
        
     
 }
-
 
 
 //-(void)makenotification;

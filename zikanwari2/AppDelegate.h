@@ -19,6 +19,9 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+
+
+
 /*問題
 通知が来ない
 

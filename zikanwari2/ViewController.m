@@ -244,7 +244,7 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     if ([textField.text isEqualToString:@""]) {
         
         UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle:@"内容を入力してください"
+                              initWithTitle:@"Please enter the"
                               message:@""
                               delegate:self
                               cancelButtonTitle:@"OK"
@@ -335,6 +335,206 @@ static NSString *const dayoftheweek[WIDTH_BLOCK_NUM ] = {@"", @"月", @"火", @"
     m_teacher.hidden = NO;
     
       [m_scr setContentOffset:CGPointZero animated:YES];
+    
+    switch (numforjudge) {
+            
+        case 1:
+            
+            [self save0];{
+                
+                NSUserDefaults *readdefault0 = [NSUserDefaults standardUserDefaults];
+                
+                m_date[0] = [readdefault0 objectForKey:@"date0"];
+                
+                
+                
+                newdate[0] = [newdate[0] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT] sinceDate:m_date[0]];
+                
+                NSLog(@"%@" , newdate[0]);
+                
+                
+                
+                
+                
+                //NSLog(@"%@" , local_date[0]);
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            }
+            
+            
+            
+            break;
+            
+            
+            
+        case 2:
+            
+            [self save1];
+            
+        {NSUserDefaults *readdefault1 = [NSUserDefaults standardUserDefaults];
+            
+            m_date[1] = [readdefault1 objectForKey:@"date1"];}
+            
+            
+            
+            newdate[1] = [newdate[1] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT] sinceDate:m_date[1]];
+            
+            
+            
+            
+            
+            
+            
+            // NSLog(@"%@" , newdate[1]);
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            break;
+            
+            
+            
+        case 3:
+            
+            [self save2];
+            
+        {NSUserDefaults *readdefault2 = [NSUserDefaults standardUserDefaults];
+            
+            m_date[2] = [readdefault2 objectForKey:@"date2"];}
+            
+            newdate[2] = [newdate[2] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT] sinceDate:m_date[2]];
+            
+          //  NSLog(@"%@" , newdate[2]);
+            
+            break;
+            
+            
+            
+            
+            
+            
+            
+        case 4:
+            
+            [self save3];{
+                
+                NSUserDefaults *readdefault3 = [NSUserDefaults standardUserDefaults];
+                
+                m_date[3] = [readdefault3 objectForKey:@"date3"];
+                
+                newdate[3] = [newdate[3] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT] sinceDate:m_date[3]];
+                
+             //   NSLog(@"%@" , newdate[3]);
+                
+                
+                
+                
+                
+                
+                
+            }
+            
+            
+            
+            break;
+            
+            
+            
+        case 5:
+            
+            [self save4];{
+                
+                
+                
+                NSUserDefaults *readdefault4 = [NSUserDefaults standardUserDefaults];
+                
+                m_date[4] = [readdefault4 objectForKey:@"date4"];
+                
+                newdate[4] = [newdate[4] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT] sinceDate:m_date[4]];
+                
+                //NSLog(@"%@" , newdate[4]);
+                
+                
+                
+                
+                
+            }
+            
+            
+            
+            break;
+            
+            
+            
+        case 6:
+            
+            [self save5];{
+                
+                NSUserDefaults *readdefault5 = [NSUserDefaults standardUserDefaults];
+                
+                m_date[5] = [readdefault5 objectForKey:@"date5"];
+                
+                newdate[5] = [newdate[5] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT] sinceDate:m_date[5]];
+                
+                NSLog(@"%@" , newdate[5]);
+                
+                // NSLog(@"%@" , local_date[5]);
+                
+                
+                
+                
+                
+                
+                
+            }
+            
+            break;
+            
+            
+            
+        case 7:
+            
+            [self save6];
+            
+            NSUserDefaults *readdefault6 = [NSUserDefaults standardUserDefaults];
+            
+            m_date[6] = [readdefault6 objectForKey:@"date6"];
+            
+            newdate[6] = [newdate[6] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT] sinceDate:m_date[6]];
+            
+            
+            
+          //  NSLog(@"%@" , newdate[6]);
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            break;
+            
+            
+            
+            
+            
+    }
+    
+
     
     
     
